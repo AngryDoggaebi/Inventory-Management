@@ -15,7 +15,6 @@ main {
 }
 
 table {
-  border: 1px solid #444444;
   border-collapse: collapse;
   /*  테이블 크기 고정 */
   table-layout: fixed;

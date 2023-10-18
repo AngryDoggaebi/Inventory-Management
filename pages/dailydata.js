@@ -4,11 +4,13 @@ import { SelectedDateAtom } from "@/recoil/date";
 import { useRecoilValue } from "recoil";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { formattedDate } from "@/utill/currentdate";
 
 const Dailydata = () => {
   const [result, setResult] = useState();
   const selectedDate = useRecoilValue(SelectedDateAtom);
 
+  // get 요청
   useEffect(() => {
     const getHandler = async () => {
       try {
@@ -29,6 +31,7 @@ const Dailydata = () => {
     getHandler();
   }, [selectedDate]);
 
+  // delete 요청
   const deleteHandler = async (id, e) => {
     try {
       await axios
@@ -51,7 +54,11 @@ const Dailydata = () => {
           return (
             <div style={{ display: "flex", flexFlow: "column" }} key={v._id}>
               <table>
-                <tbody>
+                <tbody
+                  style={
+                    v.date === selectedDate ? { border: "2px solid red" } : null
+                  }
+                >
                   <tr>
                     <td>{date[1] + "월" + " " + date[2] + "일"}</td>
                   </tr>
@@ -102,13 +109,19 @@ const Dailydata = () => {
                   </tr>
                 </tbody>
               </table>
-              <button
-                onClick={(e) => {
-                  deleteHandler(v._id, e);
-                }}
-              >
-                삭제
-              </button>
+              {/* v가 데이터의 마지막 요소이면서 날짜가 현재 날짜인지 확인 (당일 데이터만 삭제 가능) */}
+              {v === result[result.length - 1] &&
+              result[result.length - 1].date === formattedDate ? (
+                <button
+                  onClick={(e) => {
+                    deleteHandler(v._id, e);
+                  }}
+                >
+                  삭제
+                </button>
+              ) : (
+                <button>수정</button>
+              )}
             </div>
           );
         })}
