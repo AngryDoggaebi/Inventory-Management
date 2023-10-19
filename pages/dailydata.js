@@ -1,10 +1,13 @@
 "use client";
 
-import { SelectedDateAtom } from "@/recoil/date";
+import {
+  SelectedDateAtom,
+  formattedTodaySelector,
+  formattedYesterdaySelector,
+} from "@/recoil/date";
 import { useRecoilValue } from "recoil";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { formattedToday, formattedYesterday } from "@/utill/formattedDate";
 import { getHandler } from "./api/get";
 import { IsClickedAtom } from "@/recoil/daily";
 
@@ -16,6 +19,8 @@ const Dailydata = () => {
   const [result, setResult] = useState();
   const selectedDate = useRecoilValue(SelectedDateAtom);
   const isClicked = useRecoilValue(IsClickedAtom);
+  const formattedToday = useRecoilValue(formattedTodaySelector);
+  const formattedYesterday = useRecoilValue(formattedYesterdaySelector);
 
   // 어제 데이터 찾아보고 post 안 했으면 자동으로 빈 데이터 전송(수정 용이, 코드의 단순화 위해)
   useEffect(() => {
@@ -36,7 +41,7 @@ const Dailydata = () => {
 
   useEffect(() => {
     // get 요청
-    getHandler(selectedDate).then((response) => {
+    getHandler(selectedDate, formattedToday).then((response) => {
       setResult(response.data);
     });
   }, [selectedDate, isClicked]);

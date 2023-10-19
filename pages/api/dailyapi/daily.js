@@ -1,6 +1,5 @@
 import { ObjectId } from "mongodb";
 import { connectDB } from "@/utill/database";
-import { formattedToday } from "@/utill/formattedDate";
 
 export default async function handler(req, res) {
   const db = (await connectDB).db("checklist");
@@ -33,6 +32,8 @@ export default async function handler(req, res) {
   // 추가 POST
   //=================================================
   if (req.method === "POST") {
+    const formattedToday = req.body.date;
+
     // 이미 등록했는지 확인(하루 한 번만 post 가능)
     const isPosted = await db
       .collection("inventory")
@@ -64,6 +65,7 @@ export default async function handler(req, res) {
   // 조회 GET
   //=================================================
   if (req.method === "GET") {
+    const formattedToday = req.query.formattedToday;
     // 선택한 날짜, 데이터, 데이터 번호
     const selectedDate = req.query.selectedDate;
     const selectedData = await db

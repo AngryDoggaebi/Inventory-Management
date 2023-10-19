@@ -1,15 +1,16 @@
 import styles from "./dailypost.module.css";
-import { formattedToday } from "../utill/formattedDate";
 import { useState } from "react";
 import axios from "axios";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { IsClickedAtom } from "@/recoil/daily";
+import { formattedTodaySelector } from "@/recoil/date";
 
 /** todo
  * post 빈 값, 자바스크립트 코드 등 에러핸들링
  * 입력 옆에 보통 부족 충분 선택하게 해서 컬러링
  */
 const Dailypost = () => {
+  const formattedToday = useRecoilValue(formattedTodaySelector);
   const [isClicked, setIsClicked] = useRecoilState(IsClickedAtom);
   const [inputData, setInputData] = useState({
     aditor: "",
