@@ -18,6 +18,7 @@ table {
   border-collapse: collapse;
   /*  테이블 크기 고정 */
   table-layout: fixed;
+  height: 100%;
 }
 
 .fixturenameTable {

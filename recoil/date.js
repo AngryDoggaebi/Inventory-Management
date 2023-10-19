@@ -1,5 +1,5 @@
 "use client";
-import { formattedDate } from "../utill/currentdate";
+import { formattedToday } from "../utill/formattedDate";
 import { atom, selector } from "recoil";
 
 /** 선택한 날짜
@@ -8,5 +8,5 @@ import { atom, selector } from "recoil";
  */
 export const SelectedDateAtom = atom({
   key: "SelectedDateAtom",
-  default: formattedDate,
+  default: formattedToday,
 });

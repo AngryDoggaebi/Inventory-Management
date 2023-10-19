@@ -1,7 +1,7 @@
 import Dailydata from "./dailydata";
 import Dailypost from "./dailypost";
 import DailyFixtureName from "./dailyfixturename";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import React from "react";
 import dynamic from "next/dynamic";
 

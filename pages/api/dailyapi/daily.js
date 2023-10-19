@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { connectDB } from "@/utill/database";
-import { formattedDate } from "@/utill/currentdate";
+import { formattedToday } from "@/utill/formattedDate";
 
 export default async function handler(req, res) {
   const db = (await connectDB).db("checklist");
@@ -33,11 +33,18 @@ export default async function handler(req, res) {
   // 추가 POST
   //=================================================
   if (req.method === "POST") {
+    // 이미 등록했는지 확인(하루 한 번만 post 가능)
+    const isPosted = await db
+      .collection("inventory")
+      .findOne({ date: formattedToday });
+    if (isPosted) {
+      return res.status(409).json("오늘 재고는 이미 등록되어 있습니다");
+    }
     // 빈 값 검사
-    const allValues = Object.values(req.body);
+    const allValues = Object.values(req.body.data);
     const filteredValues = allValues.filter((v) => v.length !== 0);
     if (filteredValues.length !== allValues.length) {
-      return res.status(500).json("빈 값 있음");
+      return res.status(400).json("빈 값 있음");
     }
 
     // 마지막 데이터의 dataNum에 1 더해 req.body에 추가
@@ -71,7 +78,7 @@ export default async function handler(req, res) {
     let toExcludeDataNum; // 제외할 데이터 개수
 
     // 선택한 날짜가 오늘 날짜이면서 데이터가 없을 때
-    if (selectedDate === formattedDate && !selectedData) {
+    if (selectedDate === formattedToday && !selectedData) {
       toExcludeDataNum = lastDataNum - 6;
     }
     // 너무 뒷 날짜 선택한 경우
