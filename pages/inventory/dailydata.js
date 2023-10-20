@@ -8,7 +8,7 @@ import {
 import { useRecoilValue } from 'recoil';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { getHandler } from './api/get';
+import { getHandler } from '../api/get';
 import { IsClickedAtom } from '@/recoil/daily';
 
 /** todo

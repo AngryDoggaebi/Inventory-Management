@@ -1,4 +1,3 @@
-import styles from './dailypost.module.css';
 import { useState } from 'react';
 import axios from 'axios';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -58,7 +57,7 @@ const Dailypost = () => {
 
   return (
     <>
-      <form className={styles.postdata}>
+      <form className="post-edit-input">
         <div>{formattedToday}</div>
         <div>
           <input

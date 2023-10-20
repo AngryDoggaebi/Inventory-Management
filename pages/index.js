@@ -1,29 +1,11 @@
-import Dailydata from './dailydata';
-import Dailypost from './dailypost';
-import DailyFixtureName from './dailyfixturename';
-import { Suspense, useState } from 'react';
-import dynamic from 'next/dynamic';
-import Clock from './clock';
+import React from 'react';
 
-const TimePickers = dynamic(() => import('./timePickers'), { ssr: false });
-
-export default function Home() {
+const index = () => {
   return (
-    <main>
-      <div className="daily_data_wrapper">
-        <Clock />
-        <Suspense fallback={<div>로딩 중. . .</div>}>
-          <TimePickers />
-        </Suspense>
-
-        <div className="daily-data">
-          <DailyFixtureName />
-          <Dailydata />
-        </div>
-      </div>
-      <div className="daily_post_wrapper">
-        <Dailypost />
-      </div>
-    </main>
+    <div>
+      <div>재고관리, 인수인계 어플리케이션</div>
+    </div>
   );
-}
+};
+
+export default index;
