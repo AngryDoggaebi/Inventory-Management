@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { IsClickedAtom } from '@/recoil/daily';
 import { formattedTodaySelector } from '@/recoil/date';
+import { postHandler } from '../api/post';
 
 /**
  * @todo post 빈 값, 자바스크립트 코드 등 에러핸들링
@@ -43,16 +43,8 @@ const Dailypost = () => {
     setInputData({ ...inputData, [name]: value });
   };
 
-  const postHandler = async () => {
-    const data = { date: formattedToday, directInput: true, data: inputData };
-    try {
-      await axios.post('/api/dailyapi/daily', data).then(() => {
-        setIsClicked(isClicked + 1);
-      });
-    } catch (error) {
-      alert(error.response.data);
-      throw error;
-    }
+  const onClickHandler = () => {
+    postHandler(formattedToday, inputData, setIsClicked, isClicked);
   };
 
   return (
@@ -127,7 +119,7 @@ const Dailypost = () => {
           value={wrappingPaper}
           onChange={e => inputHandler(e)}
         />
-        <button type="button" onClick={postHandler}>
+        <button type="button" onClick={onClickHandler}>
           입력하기
         </button>
       </form>

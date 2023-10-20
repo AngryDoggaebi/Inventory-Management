@@ -59,7 +59,7 @@ const Dailydata = () => {
   };
 
   // 수정 클릭시
-  const editHandler = (id, date, e) => {
+  const editHandler = date => {
     setEditDate(date);
   };
 
@@ -144,18 +144,29 @@ const Dailydata = () => {
               {/* v가 데이터의 마지막 요소이면서 날짜가 현재 날짜인지 확인 (당일 데이터만 삭제 가능) */}
               {v === result[result.length - 1] &&
               result[result.length - 1].date === formattedToday ? (
-                <button
-                  onClick={e => {
-                    deleteHandler(v._id, e);
-                  }}
-                >
-                  삭제 🗑️
-                </button>
+                <>
+                  <Link href={`/inventory/${v._id}`}>
+                    <button
+                      onClick={() => {
+                        editHandler(v.date);
+                      }}
+                    >
+                      수정 ✏️
+                    </button>
+                  </Link>
+                  <button
+                    onClick={e => {
+                      deleteHandler(v._id, e);
+                    }}
+                  >
+                    삭제 🗑️
+                  </button>
+                </>
               ) : (
                 <Link href={`/inventory/${v._id}`}>
                   <button
                     onClick={e => {
-                      editHandler(v._id, v.date, e);
+                      editHandler(v.date);
                     }}
                   >
                     수정 ✏️
