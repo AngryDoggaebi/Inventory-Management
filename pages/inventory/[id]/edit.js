@@ -2,9 +2,8 @@ import axios from 'axios';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import PostTodayBtn from '@/components/PostTodayBtn';
 
-const Edit = ({ item, todayItem }) => {
+const Edit = ({ item }) => {
   const params = useParams();
   const [originalData, setOriginalData] = useState();
   const router = useRouter();
@@ -65,8 +64,6 @@ const Edit = ({ item, todayItem }) => {
   return (
     <div className="column-tag">
       <h2>수정하기</h2>
-
-      <PostTodayBtn todayItem={todayItem} />
 
       <form className="post-edit-input">
         <div id="edit-date">{originalData && originalData.date}</div>

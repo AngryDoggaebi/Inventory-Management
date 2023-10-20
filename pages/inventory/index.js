@@ -12,9 +12,9 @@ export default function Home() {
     <main>
       <div className="daily_data_wrapper">
         <Clock />
-        <Suspense fallback={<div>로딩 중. . .</div>}>
+        <div className="daily-menu">
           <TimePickers />
-        </Suspense>
+        </div>
 
         <div className="daily-data">
           <DailyFixtureName />
