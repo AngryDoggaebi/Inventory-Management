@@ -59,14 +59,7 @@ const Dailypost = () => {
     <>
       <form className="post-edit-input">
         <div>{formattedToday}</div>
-        <div>
-          <input
-            name="date"
-            value={formattedToday}
-            style={{ display: 'none' }}
-            readOnly
-          />
-        </div>
+
         <input
           placeholder="작성자"
           name="aditor"

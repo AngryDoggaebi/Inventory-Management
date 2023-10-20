@@ -10,10 +10,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getHandler } from '../api/get';
 import { IsClickedAtom } from '@/recoil/daily';
-
-/** todo
- * 수정기능 구현
- */
+import { useRouter } from 'next/router';
 
 const Dailydata = () => {
   const [result, setResult] = useState();
@@ -21,6 +18,7 @@ const Dailydata = () => {
   const isClicked = useRecoilValue(IsClickedAtom);
   const formattedToday = useRecoilValue(formattedTodaySelector);
   const formattedYesterday = useRecoilValue(formattedYesterdaySelector);
+  const router = useRouter();
 
   // 어제 데이터 찾아보고 post 안 했으면 자동으로 빈 데이터 전송(수정 용이, 코드의 단순화 위해)
   useEffect(() => {
@@ -61,10 +59,9 @@ const Dailydata = () => {
   };
 
   // 수정 클릭시
-  const editHandler = (id, e) => {};
-
-  // fetch 요청
-  const patchHandler = async (id, e) => {};
+  const editHandler = id => {
+    router.push(`/inventory/${id}`);
+  };
 
   return (
     <>
@@ -149,7 +146,7 @@ const Dailydata = () => {
               ) : (
                 <button
                   onClick={e => {
-                    editHandler(v._id, e);
+                    editHandler(v._id);
                   }}
                 >
                   수정 ✏️
