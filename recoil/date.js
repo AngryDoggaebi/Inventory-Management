@@ -4,7 +4,7 @@ import { atom, selector } from 'recoil';
 
 /** 선택한 날짜
  * YYYY-MM-DD
- * string
+ * @type {string}
  */
 export const SelectedDateAtom = atom({
   key: 'SelectedDateAtom',
@@ -23,6 +23,10 @@ export const TodayAtom = atom({
   ),
 });
 
+/**
+ * format한 오늘 날짜
+ * @returns YYYY-MM-DD
+ */
 export const formattedTodaySelector = selector({
   key: 'formattedTodaySelector',
   get: ({ get }) => {
@@ -36,6 +40,10 @@ export const formattedTodaySelector = selector({
   },
 });
 
+/**
+ * format한 어제 날짜
+ * @returns YYYY-MM-DD
+ */
 export const formattedYesterdaySelector = selector({
   key: 'formattedYesterdaySelector',
   get: ({ get }) => {

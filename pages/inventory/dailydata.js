@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getHandler } from '../api/get';
 import { IsClickedAtom } from '@/recoil/daily';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Dailydata = () => {
   const [result, setResult] = useState();
@@ -18,7 +18,6 @@ const Dailydata = () => {
   const isClicked = useRecoilValue(IsClickedAtom);
   const formattedToday = useRecoilValue(formattedTodaySelector);
   const formattedYesterday = useRecoilValue(formattedYesterdaySelector);
-  const router = useRouter();
   const [editDate, setEditDate] = useState();
 
   // 어제 데이터 찾아보고 post 안 했으면 자동으로 빈 데이터 전송(수정 용이, 코드의 단순화 위해)
@@ -62,15 +61,13 @@ const Dailydata = () => {
   // 수정 클릭시
   const editHandler = (id, date, e) => {
     setEditDate(date);
-
-    router.push(`/inventory/${id}`);
   };
 
   return (
     <>
       {result &&
         result.map(v => {
-          const date = v.date.split('-');
+          const date = v.date && v.date.split('-');
 
           return (
             <div style={{ display: 'flex', flexFlow: 'column' }} key={v._id}>
@@ -94,7 +91,7 @@ const Dailydata = () => {
                           : null
                       }
                     >
-                      {date[1] + '월' + ' ' + date[2] + '일'}
+                      {date && date[1] + '월' + ' ' + date[2] + '일'}
                     </td>
                   </tr>
                   <tr>
@@ -155,13 +152,15 @@ const Dailydata = () => {
                   삭제 🗑️
                 </button>
               ) : (
-                <button
-                  onClick={e => {
-                    editHandler(v._id, v.date, e);
-                  }}
-                >
-                  수정 ✏️
-                </button>
+                <Link href={`/inventory/${v._id}`}>
+                  <button
+                    onClick={e => {
+                      editHandler(v._id, v.date, e);
+                    }}
+                  >
+                    수정 ✏️
+                  </button>
+                </Link>
               )}
             </div>
           );

@@ -1,5 +1,12 @@
 import { connectDB } from '@/utill/database';
 
+/**
+ * 어제 데이터 조회 후 데이터가 없는 경우 빈 데이터 생성
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
+
 export default async function handler(req, res) {
   const db = (await connectDB).db('checklist');
 
