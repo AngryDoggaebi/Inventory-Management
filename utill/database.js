@@ -1,13 +1,11 @@
-import { MongoClient } from "mongodb";
-
-require("dotenv").config();
+import { MongoClient } from 'mongodb';
 
 const url =
-  "mongodb+srv://" + process.env.DB_ACCOUNT + "@cluster0.gdluwdf.mongodb.net/";
+  'mongodb+srv://' + process.env.DB_ACCOUNT + '@cluster0.gdluwdf.mongodb.net/';
 const options = { useNewUrlParser: true };
 let connectDB;
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === 'development') {
   if (!global._mongo) {
     global._mongo = new MongoClient(url, options).connect();
   }

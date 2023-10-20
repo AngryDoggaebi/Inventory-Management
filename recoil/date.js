@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { atom, selector } from "recoil";
+import { atom, selector } from 'recoil';
 
 /** 선택한 날짜
  * YYYY-MM-DD
  * string
  */
 export const SelectedDateAtom = atom({
-  key: "SelectedDateAtom",
+  key: 'SelectedDateAtom',
   default: `${new Date().getFullYear()}-${
     new Date().getMonth() + 1
   }-${new Date().getDate()}`,
@@ -17,14 +17,14 @@ export const SelectedDateAtom = atom({
  * Fri Oct 20 2023 01:00:14 GMT+0900 (한국 표준시)
  */
 export const TodayAtom = atom({
-  key: "TodayAtom",
+  key: 'TodayAtom',
   default: new Date(
-    new Date().toLocaleString("en-US", { timeZone: "Asia/Seoul" })
+    new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }),
   ),
 });
 
 export const formattedTodaySelector = selector({
-  key: "formattedTodaySelector",
+  key: 'formattedTodaySelector',
   get: ({ get }) => {
     get(TodayAtom);
     const today = new Date();
@@ -37,7 +37,7 @@ export const formattedTodaySelector = selector({
 });
 
 export const formattedYesterdaySelector = selector({
-  key: "formattedYesterdaySelector",
+  key: 'formattedYesterdaySelector',
   get: ({ get }) => {
     const today = get(TodayAtom);
     const yesterday = new Date(today.setDate(today.getDate() - 1));

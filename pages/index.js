@@ -1,12 +1,11 @@
-import Dailydata from "./dailydata";
-import Dailypost from "./dailypost";
-import DailyFixtureName from "./dailyfixturename";
-import { Suspense, useState } from "react";
-import React from "react";
-import dynamic from "next/dynamic";
-import Clock from "./clock";
+import Dailydata from './dailydata';
+import Dailypost from './dailypost';
+import DailyFixtureName from './dailyfixturename';
+import { Suspense, useState } from 'react';
+import dynamic from 'next/dynamic';
+import Clock from './clock';
 
-const TimePickers = dynamic(() => import("./timePickers"), { ssr: false });
+const TimePickers = dynamic(() => import('./timePickers'), { ssr: false });
 
 export default function Home() {
   return (

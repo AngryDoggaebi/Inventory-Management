@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
 import {
   SelectedDateAtom,
   formattedTodaySelector,
   formattedYesterdaySelector,
-} from "@/recoil/date";
-import { useRecoilValue } from "recoil";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { getHandler } from "./api/get";
-import { IsClickedAtom } from "@/recoil/daily";
+} from '@/recoil/date';
+import { useRecoilValue } from 'recoil';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { getHandler } from './api/get';
+import { IsClickedAtom } from '@/recoil/daily';
 
 /** todo
  * 수정기능 구현
@@ -26,7 +26,7 @@ const Dailydata = () => {
   useEffect(() => {
     const emptyDataHandler = async () => {
       try {
-        await axios.get(`/api/dailyapi/yesterdayDataChecker`, {
+        await axios.get('/api/dailyapi/yesterdayDataChecker', {
           params: {
             yesterday: formattedYesterday,
           },
@@ -41,7 +41,7 @@ const Dailydata = () => {
 
   useEffect(() => {
     // get 요청
-    getHandler(selectedDate, formattedToday).then((response) => {
+    getHandler(selectedDate, formattedToday).then(response => {
       setResult(response.data);
     });
   }, [selectedDate, isClicked]);
@@ -50,10 +50,10 @@ const Dailydata = () => {
   const deleteHandler = async (id, e) => {
     try {
       await axios
-        .delete(`/api/dailyapi/daily`, { data: { id: id } })
+        .delete('/api/dailyapi/daily', { data: { id: id } })
         .then(() => {
           // 클릭한 버튼의 부모요소 삭제(안보이게)
-          e.target.parentElement.style.display = "none";
+          e.target.parentElement.style.display = 'none';
         });
     } catch (err) {
       alert(err);
@@ -69,25 +69,25 @@ const Dailydata = () => {
   return (
     <>
       {result &&
-        result.map((v) => {
-          const date = v.date.split("-");
+        result.map(v => {
+          const date = v.date.split('-');
 
           return (
-            <div style={{ display: "flex", flexFlow: "column" }} key={v._id}>
+            <div style={{ display: 'flex', flexFlow: 'column' }} key={v._id}>
               <table
                 style={
                   v.directInput === false
-                    ? { backgroundColor: "#d7d7d77d" }
+                    ? { backgroundColor: '#d7d7d77d' }
                     : null
                 }
               >
                 <tbody
                   style={
-                    v.date === selectedDate ? { border: "2px solid red" } : null
+                    v.date === selectedDate ? { border: '2px solid red' } : null
                   }
                 >
                   <tr>
-                    <td>{date[1] + "월" + " " + date[2] + "일"}</td>
+                    <td>{date[1] + '월' + ' ' + date[2] + '일'}</td>
                   </tr>
                   <tr>
                     <td>{v.data && v.data.aditor}</td>
@@ -140,7 +140,7 @@ const Dailydata = () => {
               {v === result[result.length - 1] &&
               result[result.length - 1].date === formattedToday ? (
                 <button
-                  onClick={(e) => {
+                  onClick={e => {
                     deleteHandler(v._id, e);
                   }}
                 >
@@ -148,7 +148,7 @@ const Dailydata = () => {
                 </button>
               ) : (
                 <button
-                  onClick={(e) => {
+                  onClick={e => {
                     editHandler(v._id, e);
                   }}
                 >
