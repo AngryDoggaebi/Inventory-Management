@@ -67,3 +67,7 @@ input {
   flex-flow: column;
   gap: 10px;
 }
+
+#edit-date {
+  background-color: skyblue;
+}

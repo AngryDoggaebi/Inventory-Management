@@ -19,6 +19,7 @@ const Dailydata = () => {
   const formattedToday = useRecoilValue(formattedTodaySelector);
   const formattedYesterday = useRecoilValue(formattedYesterdaySelector);
   const router = useRouter();
+  const [editDate, setEditDate] = useState();
 
   // 어제 데이터 찾아보고 post 안 했으면 자동으로 빈 데이터 전송(수정 용이, 코드의 단순화 위해)
   useEffect(() => {
@@ -42,7 +43,7 @@ const Dailydata = () => {
     getHandler(selectedDate, formattedToday).then(response => {
       setResult(response.data);
     });
-  }, [selectedDate, isClicked]);
+  }, [selectedDate, isClicked, editDate]);
 
   // delete 요청
   const deleteHandler = async (id, e) => {
@@ -59,7 +60,9 @@ const Dailydata = () => {
   };
 
   // 수정 클릭시
-  const editHandler = id => {
+  const editHandler = (id, date, e) => {
+    setEditDate(date);
+
     router.push(`/inventory/${id}`);
   };
 
@@ -84,7 +87,15 @@ const Dailydata = () => {
                   }
                 >
                   <tr>
-                    <td>{date[1] + '월' + ' ' + date[2] + '일'}</td>
+                    <td
+                      style={
+                        v.date === editDate
+                          ? { backgroundColor: 'skyblue' }
+                          : null
+                      }
+                    >
+                      {date[1] + '월' + ' ' + date[2] + '일'}
+                    </td>
                   </tr>
                   <tr>
                     <td>{v.data && v.data.aditor}</td>
@@ -146,7 +157,7 @@ const Dailydata = () => {
               ) : (
                 <button
                   onClick={e => {
-                    editHandler(v._id);
+                    editHandler(v._id, v.date, e);
                   }}
                 >
                   수정 ✏️

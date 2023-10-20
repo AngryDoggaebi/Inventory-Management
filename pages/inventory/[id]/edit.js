@@ -68,7 +68,7 @@ const Edit = () => {
   return (
     <>
       <form className="post-edit-input">
-        <div>{originalData && originalData.date}</div>
+        <div id="edit-date">{originalData && originalData.date}</div>
 
         <input
           placeholder="작성자"
