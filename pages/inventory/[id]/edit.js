@@ -1,5 +1,5 @@
-import { patchHandler } from '@/pages/api/patch';
-import { postHandler } from '@/pages/api/post';
+import { patchHandler } from '@/utill/api/patch';
+import { postHandler } from '@/utill/api/post';
 import { IsClickedAtom } from '@/recoil/daily';
 import { formattedTodaySelector } from '@/recoil/date';
 import axios from 'axios';
@@ -30,7 +30,6 @@ const Edit = ({ item }) => {
 
   useEffect(() => {
     setOriginalData(item);
-    console.log(item);
     // 기본값 저장
     setInputData({
       ...inputData,

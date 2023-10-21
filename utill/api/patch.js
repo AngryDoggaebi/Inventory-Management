@@ -6,7 +6,7 @@ export const patchHandler = async (id, inputData) => {
 
     return res;
   } catch (error) {
-    alert(error.response.data);
+    alert(error);
     throw error;
   }
 };

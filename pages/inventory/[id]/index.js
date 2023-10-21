@@ -7,7 +7,9 @@ import axios from 'axios';
 import { formattedToday } from '@/utill/formattedDate';
 import PostTodayBtn from '@/components/PostTodayBtn';
 
-const TimePickers = dynamic(() => import('../timePickers'), { ssr: false });
+const TimePickers = dynamic(() => import('../../../components/timePickers'), {
+  ssr: false,
+});
 
 const index = ({ item, todayItem }) => {
   return (
@@ -32,13 +34,15 @@ const index = ({ item, todayItem }) => {
 export default index;
 
 export const getServerSideProps = async context => {
-  const id = context.params.id;
-  const res = await axios.get(
-    `${process.env.SERVER_HOST}/api/dailyapi/edit?id=${id}`,
-  );
+  const SERVER_HOST = process.env.SERVER_HOST;
 
-  const res2 = await axios.get(
-    `${process.env.SERVER_HOST}/api/dailyapi/specificDateChecker?date=${formattedToday}`,
+  const id = context.params.id;
+  let res;
+  res = await axios.get(`${SERVER_HOST}/api/dailyapi/edit?id=${id}`);
+
+  let res2;
+  res2 = await axios.get(
+    `${SERVER_HOST}/api/dailyapi/specificDateChecker?date=${formattedToday}`,
   );
 
   return {

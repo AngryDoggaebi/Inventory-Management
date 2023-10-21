@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { IsClickedAtom } from '@/recoil/daily';
 import { formattedTodaySelector } from '@/recoil/date';
-import { postHandler } from '../api/post';
+import { postHandler } from '../../utill/api/post';
 
 /**
  * @todo post 빈 값, 자바스크립트 코드 등 에러핸들링

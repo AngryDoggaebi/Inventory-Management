@@ -8,7 +8,7 @@ import {
 import { useRecoilValue } from 'recoil';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { getHandler } from '../api/get';
+import { getHandler } from '../../utill/api/get';
 import { IsClickedAtom } from '@/recoil/daily';
 import Link from 'next/link';
 
@@ -165,7 +165,7 @@ const Dailydata = () => {
               ) : (
                 <Link href={`/inventory/${v._id}`}>
                   <button
-                    onClick={e => {
+                    onClick={() => {
                       editHandler(v.date);
                     }}
                   >
