@@ -11,6 +11,7 @@ import axios from 'axios';
 import { getHandler } from '../../utill/api/get';
 import { IsClickedAtom } from '@/recoil/daily';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 const Dailydata = () => {
   const [result, setResult] = useState();
@@ -18,7 +19,7 @@ const Dailydata = () => {
   const isClicked = useRecoilValue(IsClickedAtom);
   const formattedToday = useRecoilValue(formattedTodaySelector);
   const formattedYesterday = useRecoilValue(formattedYesterdaySelector);
-  const [editDate, setEditDate] = useState();
+  const params = useParams();
 
   // 어제 데이터 찾아보고 post 안 했으면 자동으로 빈 데이터 전송(수정 용이, 코드의 단순화 위해)
   useEffect(() => {
@@ -42,7 +43,7 @@ const Dailydata = () => {
     getHandler(selectedDate, formattedToday).then(response => {
       setResult(response.data);
     });
-  }, [selectedDate, isClicked, editDate]);
+  }, [selectedDate, isClicked]);
 
   // delete 요청
   const deleteHandler = async (id, e) => {
@@ -56,11 +57,6 @@ const Dailydata = () => {
     } catch (err) {
       alert(err);
     }
-  };
-
-  // 수정 클릭시
-  const editHandler = date => {
-    setEditDate(date);
   };
 
   return (
@@ -86,7 +82,7 @@ const Dailydata = () => {
                   <tr>
                     <td
                       style={
-                        v.date === editDate
+                        v._id === params.id
                           ? { backgroundColor: 'skyblue' }
                           : null
                       }
@@ -160,13 +156,7 @@ const Dailydata = () => {
               result[result.length - 1].date === formattedToday ? (
                 <>
                   <Link href={`/inventory/${v._id}`}>
-                    <button
-                      onClick={() => {
-                        editHandler(v.date);
-                      }}
-                    >
-                      수정 ✏️
-                    </button>
+                    <button>수정 ✏️</button>
                   </Link>
                   <button
                     onClick={e => {
@@ -178,13 +168,7 @@ const Dailydata = () => {
                 </>
               ) : (
                 <Link href={`/inventory/${v._id}`}>
-                  <button
-                    onClick={() => {
-                      editHandler(v.date);
-                    }}
-                  >
-                    수정 ✏️
-                  </button>
+                  <button>수정 ✏️</button>
                 </Link>
               )}
             </div>
