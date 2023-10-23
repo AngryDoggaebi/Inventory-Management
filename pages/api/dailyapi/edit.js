@@ -33,6 +33,14 @@ export default async function handler(req, res) {
   // 수정 patch
   // =================================================
   if (req.method === 'PATCH') {
+    // 빈 값 검사
+    const allValues = Object.values(req.body);
+    const filteredValues = allValues.filter(v => v.length !== 0);
+    if (filteredValues.length !== allValues.length) {
+      console.log('빈 값 있음');
+      return res.status(400).json('빈 값 있음');
+    }
+    // db저장
     try {
       await db
         .collection('inventory')
