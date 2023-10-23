@@ -10,7 +10,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 
 const Edit = ({ item }) => {
   const params = useParams();
-  const [originalData, setOriginalData] = useState();
+  const [originalData, setOriginalData] = useState(); // 수정 전 값
   const formattedToday = useRecoilValue(formattedTodaySelector);
   const [isClicked, setIsClicked] = useRecoilState(IsClickedAtom);
   const router = useRouter();
@@ -26,11 +26,11 @@ const Edit = ({ item }) => {
     opp_12: '',
     opp_kyobo: '',
     wrappingPaper: '',
-  });
+  }); // 수정할 값
 
   useEffect(() => {
     setOriginalData(item);
-    // 기본값 저장
+    // 수정하지 않는 값의 경우를 대비해서 보낼 값에 미리 저장
     setInputData({
       ...inputData,
       aditor: item.data.aditor,

@@ -95,48 +95,62 @@ const Dailydata = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td>{v.data && v.data.aditor}</td>
+                    <td>{v.data && v.directInput ? v.data.aditor : '-'}</td>
                   </tr>
                   <tr>
-                    <td>{v.data && v.data.saftybag_2}</td>
+                    <td>{v.data && v.directInput ? v.data.saftybag_2 : '-'}</td>
                   </tr>
                   <tr>
-                    <td>{v.data && v.data.saftybag_3}</td>
+                    <td>{v.data && v.directInput ? v.data.saftybag_3 : '-'}</td>
                   </tr>
                   <tr>
-                    <td>{v.data && v.data.saftybag_4}</td>
-                  </tr>
-                  <tr>
-                    <td>{v.data && v.data.box_cardboard}</td>
+                    <td>{v.data && v.directInput ? v.data.saftybag_4 : '-'}</td>
                   </tr>
                   <tr>
                     <td>
-                      <span>{v.data && v.data.box_tag4}</span>
+                      {v.data && v.directInput ? v.data.box_cardboard : '-'}
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <span>{v.data && v.data.box_m}</span>
+                      <span>
+                        {v.data && v.directInput ? v.data.box_tag4 : '-'}
+                      </span>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <span>{v.data && v.data.opp_45}</span>
+                      <span>
+                        {v.data && v.directInput ? v.data.box_m : '-'}
+                      </span>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <span>{v.data && v.data.opp_12}</span>
+                      <span>
+                        {v.data && v.directInput ? v.data.opp_45 : '-'}
+                      </span>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <span>{v.data && v.data.opp_kyobo}</span>
+                      <span>
+                        {v.data && v.directInput ? v.data.opp_12 : '-'}
+                      </span>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <span>{v.data && v.data.wrappingPaper}</span>
+                      <span>
+                        {v.data && v.directInput ? v.data.opp_kyobo : '-'}
+                      </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span>
+                        {v.data && v.directInput ? v.data.wrappingPaper : '-'}
+                      </span>
                     </td>
                   </tr>
                 </tbody>
