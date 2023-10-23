@@ -41,7 +41,7 @@ export default async function handler(req, res) {
           { $set: { data: req.body } },
         );
 
-      return res.redirect(302, '/inventory');
+      return res.status(200).json('수정완료');
     } catch (err) {
       return res.status(500);
     }
