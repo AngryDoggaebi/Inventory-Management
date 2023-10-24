@@ -176,6 +176,19 @@ const Edit = ({ item }) => {
       <button className="submit-button" type="button" onClick={onClickHandler}>
         수정하기
       </button>
+
+      <div className="color-info">
+        <span>*</span>
+        <span>
+          <span className="square">🟩</span>: 4~, 충분
+        </span>
+        <span>
+          <span className="square">🟨</span>: 1~3, 부족
+        </span>
+        <span>
+          <span className="square">🟥</span>: 0, 없음
+        </span>
+      </div>
     </form>
   );
 };

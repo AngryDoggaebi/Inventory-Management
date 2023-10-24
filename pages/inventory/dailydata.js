@@ -126,7 +126,7 @@ const Dailydata = () => {
                   <tr>
                     <td
                       className={
-                        v.data.pen_A === '충분' || Number(v.data.pen_A) >= 3
+                        v.data.pen_A === '충분' || Number(v.data.pen_A) >= 4
                           ? 'green-color'
                           : v.data.pen_A === '부족' || Number(v.data.pen_A) >= 1
                           ? 'yellow-color'

@@ -114,25 +114,40 @@ td {
   border-radius: 25px 25px;
 }
 
-/* 입력, 수정 submit 버튼 --------------------*/
+/* 입력, 수정 ---------------------------------*/
 
 .submit-button{
   cursor: pointer;
   padding: 2px;
+  margin-top: 5px;
+}
+
+.color-info{
+  display: flex;
+  /* flex-flow: column; */
+  gap: 5px;
+
+  & > span:not(:first-of-type) {
+    font-size: 12px;
+  }
+}
+
+.square {
+  font-size: 8px;
 }
 
 /* 오늘 재고가 없어요 이동 버튼 --------------------*/
 .post-today-menu {
   display: flex;
   flex-flow: column;
-  align-items: end;
+  align-items: flex-end;
 }
 .moveto-inventory-post-button{
   cursor: pointer;
   padding: 1px;
 }
 
-/* 컬러 팔레트 ------------------------------*/
+/* 컬러 팔레트 ---------------------------------*/
 
 #edit-date {
   background-color: var(--point-skyblue);

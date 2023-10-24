@@ -86,7 +86,7 @@ const Dailypost = () => {
           />
         </div>
         <div className="input-wrapper">
-          <span className="input-name">볼펜 세트 A</span>
+          <span className="input-name">* 볼펜 세트 A</span>
           <input
             placeholder="볼펜 세트 A"
             name="pen_A"
@@ -95,7 +95,7 @@ const Dailypost = () => {
           />
         </div>
         <div className="input-wrapper">
-          <span className="input-name">볼펜 세트 B</span>
+          <span className="input-name">* 볼펜 세트 B</span>
           <input
             placeholder="볼펜 세트 B"
             name="pen_B"
@@ -104,7 +104,7 @@ const Dailypost = () => {
           />
         </div>
         <div className="input-wrapper">
-          <span className="input-name">볼펜 세트 C</span>
+          <span className="input-name">* 볼펜 세트 C</span>
           <input
             placeholder="볼펜 세트 C"
             name="pen_C"
@@ -112,6 +112,7 @@ const Dailypost = () => {
             onChange={e => inputHandler(e)}
           />
         </div>
+
         <div className="input-wrapper">
           <span className="input-name">테이프 1cm</span>
           <input
@@ -156,6 +157,19 @@ const Dailypost = () => {
         >
           입력하기
         </button>
+
+        <div className="color-info">
+          <span>*</span>
+          <span>
+            <span className="square">🟩</span>: 4~, 충분
+          </span>
+          <span>
+            <span className="square">🟨</span>: 1~3, 부족
+          </span>
+          <span>
+            <span className="square">🟥</span>: 0, 없음
+          </span>
+        </div>
       </form>
     </>
   );
