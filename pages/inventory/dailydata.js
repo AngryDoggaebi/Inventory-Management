@@ -51,8 +51,8 @@ const Dailydata = () => {
       await axios
         .delete('/api/dailyapi/daily', { data: { id: id } })
         .then(() => {
-          // 클릭한 버튼의 부모요소 삭제(안보이게)
-          e.target.parentElement.style.display = 'none';
+          // 클릭한 버튼의 부모요소의 부모요소 삭제(안보이게)
+          e.target.parentElement.parentElement.style.display = 'none';
         });
     } catch (err) {
       alert(err);
@@ -68,10 +68,10 @@ const Dailydata = () => {
           return (
             <div style={{ display: 'flex', flexFlow: 'column' }} key={v._id}>
               <table
-                style={
+                className={
                   v.directInput === false
-                    ? { backgroundColor: '#d7d7d77d' }
-                    : null
+                    ? 'grey-color dailydata-table'
+                    : 'dailydata-table'
                 }
               >
                 <tbody
@@ -81,6 +81,9 @@ const Dailydata = () => {
                 >
                   <tr>
                     <td
+                      className={
+                        v.directInput === false ? 'grey-color' : 'table-color-a'
+                      }
                       style={
                         v._id === params.id
                           ? { backgroundColor: 'skyblue' }
@@ -91,59 +94,129 @@ const Dailydata = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td>{v.data && v.directInput ? v.data.aditor : '-'}</td>
+                    <td
+                      className={
+                        v.directInput === false ? 'grey-color' : 'table-color-a'
+                      }
+                    >
+                      {v.data && v.directInput ? v.data.aditor : '-'}
+                    </td>
                   </tr>
-                  <tr>
+                  <tr
+                    className={
+                      v.directInput === false ? 'grey-color' : 'table-color-b'
+                    }
+                  >
                     <td>{v.data && v.directInput ? v.data.saftybag_2 : '-'}</td>
                   </tr>
-                  <tr>
+                  <tr
+                    className={
+                      v.directInput === false ? 'grey-color' : 'table-color-b'
+                    }
+                  >
                     <td>{v.data && v.directInput ? v.data.saftybag_3 : '-'}</td>
                   </tr>
-                  <tr>
+                  <tr
+                    className={
+                      v.directInput === false ? 'grey-color' : 'table-color-b'
+                    }
+                  >
                     <td>{v.data && v.directInput ? v.data.saftybag_4 : '-'}</td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      className={
+                        v.data.box_cardboard === '충분' ||
+                        Number(v.data.box_cardboard) >= 3
+                          ? 'green-color'
+                          : v.data.box_cardboard === '부족' ||
+                            Number(v.data.box_cardboard) >= 1
+                          ? 'yellow-color'
+                          : v.data.box_cardboard === '없음' ||
+                            v.data.box_cardboard === '0'
+                          ? 'red-color'
+                          : ''
+                      }
+                    >
                       {v.data && v.directInput ? v.data.box_cardboard : '-'}
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      className={
+                        v.data.box_tag4 === '충분' ||
+                        Number(v.data.box_tag4) >= 3
+                          ? 'green-color'
+                          : v.data.box_tag4 === '부족' ||
+                            Number(v.data.box_tag4) >= 1
+                          ? 'yellow-color'
+                          : v.data.box_tag4 === '없음' ||
+                            v.data.box_tag4 === '0'
+                          ? 'red-color'
+                          : ''
+                      }
+                    >
                       <span>
                         {v.data && v.directInput ? v.data.box_tag4 : '-'}
                       </span>
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      className={
+                        v.data.box_m === '충분' || Number(v.data.box_m) >= 3
+                          ? 'green-color'
+                          : v.data.box_m === '부족' || Number(v.data.box_m) >= 1
+                          ? 'yellow-color'
+                          : v.data.box_m === '없음' || v.data.box_m === '0'
+                          ? 'red-color'
+                          : ''
+                      }
+                    >
                       <span>
                         {v.data && v.directInput ? v.data.box_m : '-'}
                       </span>
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      className={
+                        v.directInput === false ? 'grey-color' : 'table-color-b'
+                      }
+                    >
                       <span>
                         {v.data && v.directInput ? v.data.opp_45 : '-'}
                       </span>
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      className={
+                        v.directInput === false ? 'grey-color' : 'table-color-b'
+                      }
+                    >
                       <span>
                         {v.data && v.directInput ? v.data.opp_12 : '-'}
                       </span>
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      className={
+                        v.directInput === false ? 'grey-color' : 'table-color-b'
+                      }
+                    >
                       <span>
                         {v.data && v.directInput ? v.data.opp_kyobo : '-'}
                       </span>
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td
+                      className={
+                        v.directInput === false ? 'grey-color' : 'table-color-a'
+                      }
+                    >
                       <span>
                         {v.data && v.directInput ? v.data.wrappingPaper : '-'}
                       </span>
@@ -154,21 +227,26 @@ const Dailydata = () => {
               {/* v가 데이터의 마지막 요소이면서 날짜가 현재 날짜인지 확인 (당일 데이터만 삭제 가능) */}
               {v === result[result.length - 1] &&
               result[result.length - 1].date === formattedToday ? (
-                <>
+                <div className="buttons">
                   <Link href={`/inventory/${v._id}`}>
-                    <button>수정 ✏️</button>
+                    <button className="edit-delete-button">
+                      ✏️<span>수정</span>
+                    </button>
                   </Link>
                   <button
+                    className="edit-delete-button"
                     onClick={e => {
                       deleteHandler(v._id, e);
                     }}
                   >
-                    삭제 🗑️
+                    🗑️<span>삭제</span>
                   </button>
-                </>
+                </div>
               ) : (
                 <Link href={`/inventory/${v._id}`}>
-                  <button>수정 ✏️</button>
+                  <button className="edit-delete-button">
+                    ✏️<span>수정</span>
+                  </button>
                 </Link>
               )}
             </div>

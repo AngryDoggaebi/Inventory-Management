@@ -4,10 +4,6 @@ import { IsClickedAtom } from '@/recoil/daily';
 import { formattedTodaySelector } from '@/recoil/date';
 import { postHandler } from '../../utill/api/post';
 
-/**
- * @todo post 빈 값, 자바스크립트 코드 등 에러핸들링
- * @todo 입력 옆에 보통 부족 충분 선택하게 해서 컬러링
- */
 const Dailypost = () => {
   const formattedToday = useRecoilValue(formattedTodaySelector);
   const [isClicked, setIsClicked] = useRecoilState(IsClickedAtom);
@@ -108,7 +104,7 @@ const Dailypost = () => {
           onChange={e => inputHandler(e)}
         />
         <input
-          placeholder="OPP테이프 교보"
+          placeholder="OPP테이프 K"
           name="opp_kyobo"
           value={opp_kyobo}
           onChange={e => inputHandler(e)}
@@ -119,7 +115,11 @@ const Dailypost = () => {
           value={wrappingPaper}
           onChange={e => inputHandler(e)}
         />
-        <button type="button" onClick={onClickHandler}>
+        <button
+          className="submit-button"
+          type="button"
+          onClick={onClickHandler}
+        >
           입력하기
         </button>
       </form>

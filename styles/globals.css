@@ -7,35 +7,105 @@
   margin: 0;
 }
 
-.column-tag {
-  display: flex;
-  flex-flow: column;
-}
-
 main {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: rgb(29, 38, 64);
 }
+
+/* 테이블 관련 -----------------------------*/
 
 table {
   border-collapse: collapse;
   /*  테이블 크기 고정 */
   table-layout: fixed;
-  height: 100%;
+  height: 386px;
 }
 
 .fixturenameTable {
-  height: 367px;
+  height: 386px;
+  border-right: 2px solid #eeeeee7d;
+  width: 200px;
+}
+
+.dailydata-table {
+  width: 72px;
 }
 
 th,
 td {
   border: 1px solid #fffcfc;
   padding: 5px;
+  font-size: 14px;
   /*  테이블 크기 고정 */
   white-space: nowrap;
+}
+
+/* 수정, 삭제 버튼 --------------------------*/
+.buttons {
+  display: flex;
+  gap: 1px;
+}
+.edit-delete-button {
+  border: none;
+  background-color: transparent;
+  width: 35px;
+  margin-top: 5px;
+  cursor: pointer;
+
+  & > span {
+    font-size: 10px;
+  }
+}
+
+/* 입력, 수정 submit 버튼 --------------------*/
+
+.submit-button{
+  cursor: pointer;
+  padding: 2px;
+}
+
+/* 오늘 재고가 없어요 이동 버튼 --------------------*/
+.post-today-menu {
+  display: flex;
+  flex-flow: column;
+  align-items: end;
+}
+.moveto-inventory-post-button{
+  cursor: pointer;
+  padding: 1px;
+}
+
+/* 컬러 팔레트 ------------------------------*/
+
+#edit-date {
+  background-color: skyblue;
+}
+
+.red-color {
+  background-color: rgb(253, 217, 217);
+
+}
+.green-color {
+  background-color: rgb(213, 226, 213);
+
+}
+.yellow-color {
+  background-color: rgb(247, 243, 211);
+}
+
+.grey-color {
+  background-color: #eeeeee7d;
+}
+
+.table-color-a {
+  background-color: rgb(255, 244, 241);
+}
+
+.table-color-b {
+  background-color:rgb(255, 248, 248);
 }
 
 .daily_data_wrapper {
@@ -45,8 +115,8 @@ td {
   justify-content: center;
   align-items: center;
   min-width: 800px;
-  height: 500px;
-  border-radius: 80px 80px 80px 20px;
+  height: 600px;
+  border-radius: 80px 80px 80px 0px;
 }
 
 .daily-menu {
@@ -54,13 +124,28 @@ td {
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 20px;
+  width: 685px;
+  padding: 20px 0 20px 0;
 }
 
 .daily-data {
   display: flex;
 }
+
+/* 입력창 --------------------------------- */
+
+.post-edit-input {
+  display: flex;
+  flex-flow: column;
+  gap: 7px;
+
+  & > input {
+    padding: 12px 10px;
+    border: 1px solid #fffcfc;
+  }
+}
+
+/* -------------------------------------- */
 
 .daily_post_wrapper {
   display: flex;
@@ -68,20 +153,15 @@ td {
   justify-content: center;
   align-items: center;
   min-width: 300px;
-  height: 500px;
-  border-radius: 80px 80px 80px 20px;
+  height: 600px;
+  border-radius: 80px 80px 80px 0px;
 }
 
 input {
   height: 25px;
 }
 
-.post-edit-input {
+.column-tag {
   display: flex;
   flex-flow: column;
-  gap: 10px;
-}
-
-#edit-date {
-  background-color: skyblue;
 }

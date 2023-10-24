@@ -1,7 +1,6 @@
 import Dailydata from './dailydata';
 import Dailypost from './dailypost';
 import dynamic from 'next/dynamic';
-import Clock from '../clock';
 import DailyFixtureName from './dailyfixturename';
 
 const TimePickers = dynamic(() => import('../../components/timePickers'), {
@@ -12,7 +11,6 @@ export default function Home() {
   return (
     <main>
       <div className="daily_data_wrapper">
-        <Clock />
         <div className="daily-menu">
           <TimePickers />
         </div>

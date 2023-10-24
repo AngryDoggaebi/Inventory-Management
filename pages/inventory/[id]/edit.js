@@ -71,10 +71,10 @@ const Edit = ({ item }) => {
 
   return (
     <div className="column-tag">
-      <h2>수정하기</h2>
-
       <form className="post-edit-input">
+        <h2>수정하기</h2>
         <div id="edit-date">{originalData && originalData.date}</div>
+
         <input
           placeholder="작성자"
           name="aditor"
@@ -141,7 +141,11 @@ const Edit = ({ item }) => {
           defaultValue={originalData && originalData.data.wrappingPaper}
           onChange={e => inputHandler(e)}
         />
-        <button type="button" onClick={onClickHandler}>
+        <button
+          className="submit-button"
+          type="button"
+          onClick={onClickHandler}
+        >
           수정하기
         </button>
       </form>
