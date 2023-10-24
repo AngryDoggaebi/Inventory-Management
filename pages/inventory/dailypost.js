@@ -9,29 +9,29 @@ const Dailypost = () => {
   const [isClicked, setIsClicked] = useRecoilState(IsClickedAtom);
   const [inputData, setInputData] = useState({
     aditor: '',
+    saftybag_1: '',
     saftybag_2: '',
     saftybag_3: '',
-    saftybag_4: '',
-    box_cardboard: '',
-    box_tag4: '',
-    box_m: '',
-    opp_45: '',
-    opp_12: '',
-    opp_kyobo: '',
-    wrappingPaper: '',
+    pen_A: '',
+    pen_B: '',
+    pen_C: '',
+    opp_1: '',
+    opp_2: '',
+    opp_pattern: '',
+    paper: '',
   });
   const {
     aditor,
+    saftybag_1,
     saftybag_2,
     saftybag_3,
-    saftybag_4,
-    box_cardboard,
-    box_tag4,
-    box_m,
-    opp_45,
-    opp_12,
-    opp_kyobo,
-    wrappingPaper,
+    pen_A,
+    pen_B,
+    pen_C,
+    opp_1,
+    opp_2,
+    opp_pattern,
+    paper,
   } = inputData;
 
   const inputHandler = e => {
@@ -45,76 +45,110 @@ const Dailypost = () => {
 
   return (
     <>
-      <form className="post-edit-input">
+      <form className="post-edit-input-form">
         <h2>오늘 재고</h2>
         <div>{formattedToday}</div>
 
-        <input
-          placeholder="작성자"
-          name="aditor"
-          value={aditor}
-          onChange={e => inputHandler(e)}
-        />
-        <input
-          placeholder="안전봉투 2호"
-          name="saftybag_2"
-          value={saftybag_2}
-          onChange={e => inputHandler(e)}
-        />
-        <input
-          placeholder="안전봉투 3호"
-          name="saftybag_3"
-          value={saftybag_3}
-          onChange={e => inputHandler(e)}
-        />
-        <input
-          placeholder="안전봉투 4호"
-          name="saftybag_4"
-          value={saftybag_4}
-          onChange={e => inputHandler(e)}
-        />
-        <input
-          placeholder="박스 골판지"
-          name="box_cardboard"
-          value={box_cardboard}
-          onChange={e => inputHandler(e)}
-        />
-        <input
-          placeholder="박스 택4"
-          name="box_tag4"
-          value={box_tag4}
-          onChange={e => inputHandler(e)}
-        />
-        <input
-          placeholder="박스 중"
-          name="box_m"
-          value={box_m}
-          onChange={e => inputHandler(e)}
-        />
-        <input
-          placeholder="OPP테이프 4.5cm"
-          name="opp_45"
-          value={opp_45}
-          onChange={e => inputHandler(e)}
-        />
-        <input
-          placeholder="OPP테이프 1.2cm"
-          name="opp_12"
-          value={opp_12}
-          onChange={e => inputHandler(e)}
-        />
-        <input
-          placeholder="OPP테이프 K"
-          name="opp_kyobo"
-          value={opp_kyobo}
-          onChange={e => inputHandler(e)}
-        />
-        <input
-          placeholder="포장지"
-          name="wrappingPaper"
-          value={wrappingPaper}
-          onChange={e => inputHandler(e)}
-        />
+        <div className="input-wrapper">
+          <span className="input-name">작성자</span>
+          <input
+            placeholder="작성자"
+            name="aditor"
+            value={aditor}
+            onChange={e => inputHandler(e)}
+          />
+        </div>
+        <div className="input-wrapper">
+          <span className="input-name">봉투 묶음 1호</span>
+          <input
+            placeholder="봉투 묶음 1호"
+            name="saftybag_1"
+            value={saftybag_1}
+            onChange={e => inputHandler(e)}
+          />
+        </div>
+        <div className="input-wrapper">
+          <span className="input-name">봉투 묶음 2호</span>
+          <input
+            placeholder="봉투 묶음 2호"
+            name="saftybag_2"
+            value={saftybag_2}
+            onChange={e => inputHandler(e)}
+          />
+        </div>
+        <div className="input-wrapper">
+          <span className="input-name">봉투 묶음 3호</span>
+          <input
+            placeholder="봉투 묶음 3호"
+            name="saftybag_3"
+            value={saftybag_3}
+            onChange={e => inputHandler(e)}
+          />
+        </div>
+        <div className="input-wrapper">
+          <span className="input-name">볼펜 세트 A</span>
+          <input
+            placeholder="볼펜 세트 A"
+            name="pen_A"
+            value={pen_A}
+            onChange={e => inputHandler(e)}
+          />
+        </div>
+        <div className="input-wrapper">
+          <span className="input-name">볼펜 세트 B</span>
+          <input
+            placeholder="볼펜 세트 B"
+            name="pen_B"
+            value={pen_B}
+            onChange={e => inputHandler(e)}
+          />
+        </div>
+        <div className="input-wrapper">
+          <span className="input-name">볼펜 세트 C</span>
+          <input
+            placeholder="볼펜 세트 C"
+            name="pen_C"
+            value={pen_C}
+            onChange={e => inputHandler(e)}
+          />
+        </div>
+        <div className="input-wrapper">
+          <span className="input-name">테이프 1cm</span>
+          <input
+            placeholder="테이프 1cm"
+            name="opp_1"
+            value={opp_1}
+            onChange={e => inputHandler(e)}
+          />
+        </div>
+        <div className="input-wrapper">
+          <span className="input-name">테이프 2cm</span>
+          <input
+            placeholder="테이프 2cm"
+            name="opp_2"
+            value={opp_2}
+            onChange={e => inputHandler(e)}
+          />
+        </div>
+        <div className="input-wrapper">
+          <span className="input-name">무늬 테이프</span>
+          <input
+            placeholder="무늬 테이프"
+            name="opp_pattern"
+            value={opp_pattern}
+            onChange={e => inputHandler(e)}
+          />
+        </div>
+        <div className="input-wrapper">
+          <span className="input-name">종이</span>
+          <input
+            placeholder="종이"
+            name="paper"
+            value={paper}
+            onChange={e => inputHandler(e)}
+          />
+        </div>
+
         <button
           className="submit-button"
           type="button"

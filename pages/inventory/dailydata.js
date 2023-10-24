@@ -5,7 +5,7 @@ import {
   formattedTodaySelector,
   formattedYesterdaySelector,
 } from '@/recoil/date';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getHandler } from '../../utill/api/get';
@@ -16,7 +16,7 @@ import { useParams } from 'next/navigation';
 const Dailydata = () => {
   const [result, setResult] = useState();
   const selectedDate = useRecoilValue(SelectedDateAtom);
-  const isClicked = useRecoilValue(IsClickedAtom);
+  const [isClicked, setIsClicked] = useRecoilState(IsClickedAtom);
   const formattedToday = useRecoilValue(formattedTodaySelector);
   const formattedYesterday = useRecoilValue(formattedYesterdaySelector);
   const params = useParams();
@@ -51,8 +51,8 @@ const Dailydata = () => {
       await axios
         .delete('/api/dailyapi/daily', { data: { id: id } })
         .then(() => {
-          // 클릭한 버튼의 부모요소의 부모요소 삭제(안보이게)
-          e.target.parentElement.parentElement.style.display = 'none';
+          // 리렌더링;
+          setIsClicked(isClicked + 1);
         });
     } catch (err) {
       alert(err);
@@ -107,6 +107,13 @@ const Dailydata = () => {
                       v.directInput === false ? 'grey-color' : 'table-color-b'
                     }
                   >
+                    <td>{v.data && v.directInput ? v.data.saftybag_1 : '-'}</td>
+                  </tr>
+                  <tr
+                    className={
+                      v.directInput === false ? 'grey-color' : 'table-color-b'
+                    }
+                  >
                     <td>{v.data && v.directInput ? v.data.saftybag_2 : '-'}</td>
                   </tr>
                   <tr
@@ -116,65 +123,52 @@ const Dailydata = () => {
                   >
                     <td>{v.data && v.directInput ? v.data.saftybag_3 : '-'}</td>
                   </tr>
-                  <tr
-                    className={
-                      v.directInput === false ? 'grey-color' : 'table-color-b'
-                    }
-                  >
-                    <td>{v.data && v.directInput ? v.data.saftybag_4 : '-'}</td>
-                  </tr>
                   <tr>
                     <td
                       className={
-                        v.data.box_cardboard === '충분' ||
-                        Number(v.data.box_cardboard) >= 3
+                        v.data.pen_A === '충분' || Number(v.data.pen_A) >= 3
                           ? 'green-color'
-                          : v.data.box_cardboard === '부족' ||
-                            Number(v.data.box_cardboard) >= 1
+                          : v.data.pen_A === '부족' || Number(v.data.pen_A) >= 1
                           ? 'yellow-color'
-                          : v.data.box_cardboard === '없음' ||
-                            v.data.box_cardboard === '0'
+                          : v.data.pen_A === '없음' || v.data.pen_A === '0'
                           ? 'red-color'
                           : ''
                       }
                     >
-                      {v.data && v.directInput ? v.data.box_cardboard : '-'}
+                      {v.data && v.directInput ? v.data.pen_A : '-'}
                     </td>
                   </tr>
                   <tr>
                     <td
                       className={
-                        v.data.box_tag4 === '충분' ||
-                        Number(v.data.box_tag4) >= 3
+                        v.data.pen_B === '충분' || Number(v.data.pen_B) >= 3
                           ? 'green-color'
-                          : v.data.box_tag4 === '부족' ||
-                            Number(v.data.box_tag4) >= 1
+                          : v.data.pen_B === '부족' || Number(v.data.pen_B) >= 1
                           ? 'yellow-color'
-                          : v.data.box_tag4 === '없음' ||
-                            v.data.box_tag4 === '0'
+                          : v.data.pen_B === '없음' || v.data.pen_B === '0'
                           ? 'red-color'
                           : ''
                       }
                     >
                       <span>
-                        {v.data && v.directInput ? v.data.box_tag4 : '-'}
+                        {v.data && v.directInput ? v.data.pen_B : '-'}
                       </span>
                     </td>
                   </tr>
                   <tr>
                     <td
                       className={
-                        v.data.box_m === '충분' || Number(v.data.box_m) >= 3
+                        v.data.pen_C === '충분' || Number(v.data.pen_C) >= 3
                           ? 'green-color'
-                          : v.data.box_m === '부족' || Number(v.data.box_m) >= 1
+                          : v.data.pen_C === '부족' || Number(v.data.pen_C) >= 1
                           ? 'yellow-color'
-                          : v.data.box_m === '없음' || v.data.box_m === '0'
+                          : v.data.pen_C === '없음' || v.data.pen_C === '0'
                           ? 'red-color'
                           : ''
                       }
                     >
                       <span>
-                        {v.data && v.directInput ? v.data.box_m : '-'}
+                        {v.data && v.directInput ? v.data.pen_C : '-'}
                       </span>
                     </td>
                   </tr>
@@ -185,7 +179,7 @@ const Dailydata = () => {
                       }
                     >
                       <span>
-                        {v.data && v.directInput ? v.data.opp_45 : '-'}
+                        {v.data && v.directInput ? v.data.opp_1 : '-'}
                       </span>
                     </td>
                   </tr>
@@ -196,7 +190,7 @@ const Dailydata = () => {
                       }
                     >
                       <span>
-                        {v.data && v.directInput ? v.data.opp_12 : '-'}
+                        {v.data && v.directInput ? v.data.opp_2 : '-'}
                       </span>
                     </td>
                   </tr>
@@ -207,7 +201,7 @@ const Dailydata = () => {
                       }
                     >
                       <span>
-                        {v.data && v.directInput ? v.data.opp_kyobo : '-'}
+                        {v.data && v.directInput ? v.data.opp_pattern : '-'}
                       </span>
                     </td>
                   </tr>
@@ -218,7 +212,7 @@ const Dailydata = () => {
                       }
                     >
                       <span>
-                        {v.data && v.directInput ? v.data.wrappingPaper : '-'}
+                        {v.data && v.directInput ? v.data.paper : '-'}
                       </span>
                     </td>
                   </tr>

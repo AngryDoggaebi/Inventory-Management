@@ -188,15 +188,27 @@ td {
 
 /* 입력창 --------------------------------- */
 
-.post-edit-input {
+.post-edit-input-form {
   display: flex;
   flex-flow: column;
   gap: 7px;
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 
   & > input {
     padding: 12px 10px;
     border: 1px solid var(--main-white);
+    width: 125px;
   }
+}
+
+.input-name {
+  font-size: 12px;
 }
 
 /* -------------------------------------- */
@@ -215,7 +227,3 @@ input {
   height: 25px;
 }
 
-.column-tag {
-  display: flex;
-  flex-flow: column;
-}
