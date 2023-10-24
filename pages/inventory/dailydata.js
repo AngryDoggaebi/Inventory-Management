@@ -13,6 +13,12 @@ import { IsClickedAtom } from '@/recoil/daily';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
+/**
+ * @todo: 로딩중 화면
+ * @todo: 반응형
+ * @todo: input 숫자 제한
+ */
+
 const Dailydata = () => {
   const [result, setResult] = useState();
   const selectedDate = useRecoilValue(SelectedDateAtom);

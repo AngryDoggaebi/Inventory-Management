@@ -4,7 +4,7 @@ const index = () => {
   return (
     <main>
       <div className="home">
-        <h1 className="home-title">재고관리, 인수인계 어플리케이션</h1>
+        <h1 className="home-title">00회사 00부서 재고관리, 인수인계 페이지</h1>
         <Link href={'/inventory'}>
           <button className="home-button">바로가기</button>
         </Link>

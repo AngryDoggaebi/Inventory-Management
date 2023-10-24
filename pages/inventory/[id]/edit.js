@@ -111,7 +111,7 @@ const Edit = ({ item }) => {
         />
       </div>
       <div className="input-wrapper">
-        <span className="input-name">볼펜 세트 A</span>
+        <span className="input-name">* 볼펜 세트 A</span>
         <input
           placeholder="볼펜 세트 A"
           name="pen_A"
@@ -120,7 +120,7 @@ const Edit = ({ item }) => {
         />
       </div>
       <div className="input-wrapper">
-        <span className="input-name">볼펜 세트 B</span>
+        <span className="input-name">* 볼펜 세트 B</span>
         <input
           placeholder="볼펜 세트 B"
           name="pen_B"
@@ -129,7 +129,7 @@ const Edit = ({ item }) => {
         />
       </div>
       <div className="input-wrapper">
-        <span className="input-name">볼펜 세트 C</span>
+        <span className="input-name">* 볼펜 세트 C</span>
         <input
           placeholder="볼펜 세트 C"
           name="pen_C"
