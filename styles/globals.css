@@ -1,4 +1,19 @@
 :root {
+  --main-blue: rgb(29, 38, 64);
+  --main-pink: rgb(254, 235, 238);
+  --main-grey: #eeeeee7d;
+  --main-white: #fffcfc;
+
+  /* 테이블 컬러 */
+  --sub-pink-a: rgb(255, 244, 241);
+  --sub-pink-b: rgb(255, 248, 248);
+
+  /* 테이블 충분 부족 없음 표시 컬러 */
+  --point-skyblue: skyblue;
+  --point-red: rgb(253, 217, 217);
+  --point-green: rgb(213, 226, 213);
+  --point-yellow: rgb(247, 243, 211);
+
 }
 
 * {
@@ -12,52 +27,225 @@ main {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: var(--main-blue);
 }
 
+/* home 페이지 관련 ------------------------*/
+
+.home {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  & > span:nth-child(3) {
+    margin-top: 20px;
+  }
+
+  & > span {
+    color: var(--main-grey);
+  }
+}
+
+.home-title {
+  color: var(--main-pink);
+}
+
+.home-button {
+  cursor: pointer;
+  border: none;
+  background-color: var(--main-white);
+  font-size: 20px;
+  width: 100px;
+  height: 35px;
+  border-radius: 25px 25px;
+}
+.home-button:hover {
+  background-color: var(--main-pink);
+}
+
+/* 테이블 관련 -----------------------------*/
+
 table {
-  border: 1px solid #444444;
   border-collapse: collapse;
   /*  테이블 크기 고정 */
   table-layout: fixed;
+  height: 386px;
 }
 
 .fixturenameTable {
-  height: 367px;
+  height: 386px;
+  border-right: 2px solid var(--main-grey);
+  width: 200px;
+}
+
+.dailydata-table {
+  width: 72px;
 }
 
 th,
 td {
-  border: 1px solid #fffcfc;
+  border: 1px solid var(--main-white);
   padding: 5px;
+  font-size: 14px;
   /*  테이블 크기 고정 */
   white-space: nowrap;
+}
+
+/* 수정, 삭제 버튼 --------------------------*/
+.buttons {
+  display: flex;
+  gap: 1px;
+}
+.edit-delete-button {
+  border: none;
+  background-color: transparent;
+  width: 35px;
+  margin-top: 5px;
+  cursor: pointer;
+
+  & > span {
+    font-size: 10px;
+  }
+}
+.edit-delete-button:hover{
+  background-color: var(--sub-pink-b);
+  border-radius: 25px 25px;
+}
+
+/* 입력, 수정 ---------------------------------*/
+
+.submit-button{
+  cursor: pointer;
+  padding: 2px;
+  margin-top: 5px;
+}
+
+.color-info{
+  display: flex;
+  /* flex-flow: column; */
+  gap: 5px;
+
+  & > span:not(:first-of-type) {
+    font-size: 12px;
+  }
+}
+
+.square {
+  font-size: 8px;
+}
+
+/* 오늘 재고가 없어요 이동 버튼 --------------------*/
+.post-today-menu {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+}
+.moveto-inventory-post-button{
+  cursor: pointer;
+  padding: 1px;
+}
+
+/* 컬러 팔레트 ---------------------------------*/
+
+#edit-date {
+  background-color: var(--point-skyblue);
+}
+
+.red-color {
+  background-color: var(--point-red);
+
+}
+.green-color {
+  background-color: var(--point-green);
+
+}
+.yellow-color {
+  background-color: var(--point-yellow);
+}
+
+.grey-color {
+  background-color: var(--main-grey);
+}
+
+.table-color-a {
+  background-color: var(--sub-pink-a);
+}
+
+.table-color-b {
+  background-color: var(--sub-pink-b);
 }
 
 .daily_data_wrapper {
   display: flex;
   flex-flow: column;
-  background-color: rgb(254, 235, 238);
+  background-color: var(--main-pink);
   justify-content: center;
   align-items: center;
   min-width: 800px;
-  height: 500px;
-  border-radius: 80px 80px 80px 20px;
+  height: 600px;
+  border-radius: 80px 80px 80px 0px;
+}
+
+.daily-menu {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 685px;
+  padding: 20px 0 20px 0;
 }
 
 .daily-data {
   display: flex;
 }
 
+/* 입력창 --------------------------------- */
+
+.post-edit-input-form {
+  display: flex;
+  flex-flow: column;
+  gap: 7px;
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  & > input {
+    padding: 12px 10px;
+    border: 1px solid var(--main-white);
+    width: 125px;
+  }
+}
+
+.input-name {
+  font-size: 12px;
+}
+
+/* -------------------------------------- */
+
 .daily_post_wrapper {
   display: flex;
-  background-color: rgb(254, 235, 238);
+  background-color: var(--main-pink);
   justify-content: center;
   align-items: center;
   min-width: 300px;
-  height: 500px;
-  border-radius: 80px 80px 80px 20px;
+  height: 600px;
+  border-radius: 80px 80px 80px 0px;
 }
 
 input {
   height: 25px;
 }
+
+.loading-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 482px;
+}
+

@@ -1,28 +1,18 @@
-import Dailydata from "./dailydata";
-import Dailypost from "./dailypost";
-import DailyFixtureName from "./dailyfixturename";
-import { Suspense } from "react";
-import React from "react";
-import dynamic from "next/dynamic";
+import Link from 'next/link';
 
-const TimePickers = dynamic(() => import("./timePickers"), { ssr: false });
-
-export default function Home() {
+const index = () => {
   return (
     <main>
-      <div className="daily_data_wrapper">
-        <Suspense fallback={<div>로딩 중. . .</div>}>
-          <TimePickers />
-        </Suspense>
-
-        <div className="daily-data">
-          <DailyFixtureName />
-          <Dailydata />
-        </div>
-      </div>
-      <div className="daily_post_wrapper">
-        <Dailypost />
+      <div className="home">
+        <h1 className="home-title">00회사 00부서 재고관리, 인수인계 페이지</h1>
+        <Link href={'/inventory'}>
+          <button className="home-button">바로가기</button>
+        </Link>
+        <span>* 달력을 통해 이전 데이터를 조회할 수 있습니다</span>
+        <span>* 데이터 삭제는 당일 데이터에 한해 가능합니다</span>
       </div>
     </main>
   );
-}
+};
+
+export default index;
