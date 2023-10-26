@@ -1,6 +1,19 @@
 import { ObjectId } from 'mongodb';
 import { connectDB } from '@/utill/database';
 
+/**
+ * 재고 데이터 crud
+ *
+ * Delete
+ * @param { id: string } req
+ *
+ * post
+ * @param { date: string, data: { aditor: string, saftybag_2: string, saftybag_3: string, saftybag_4: string, box_cardboard: string, box_tag4: string, box_m: string, opp_45: string, opp_12: string, opp_kyobo: string,wrappingPaper: string, }, directInput: boolean } req
+ *
+ * get
+ * @param {selectedDate: selectedDate,formattedToday: formattedToday,} req
+ */
+
 export default async function handler(req, res) {
   const db = (await connectDB).db('checklist');
   // 마지막 데이터
