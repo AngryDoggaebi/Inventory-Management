@@ -3,13 +3,13 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useEffect, useState } from 'react';
-import { useSetRecoilState } from 'recoil';
-import { SelectedDateAtom } from '@/recoil/date';
 import dayjs from 'dayjs';
+import { setSelectedDate } from '@/redux/date';
+import { useDispatch } from 'react-redux';
 
 const TimePickers = () => {
   const [value, setValue] = useState();
-  const setSelectedDate = useSetRecoilState(SelectedDateAtom);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // 첫 로딩시 오늘 날짜 선택 상태로 설정
@@ -21,7 +21,7 @@ const TimePickers = () => {
     const y = value && value.$y;
     const m = value && value.$M + 1;
     const d = value && value.$D;
-    y && m && d && setSelectedDate(y + '-' + m + '-' + d);
+    y && m && d && dispatch(setSelectedDate({ y, m, d }));
   }, [value]);
 
   return (

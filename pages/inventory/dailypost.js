@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { IsClickedAtom } from '@/recoil/daily';
-import { formattedTodaySelector } from '@/recoil/date';
 import { postHandler } from '../../utill/api/post';
+import { useDispatch, useSelector } from 'react-redux';
+import { reRandering } from '@/redux/daily';
 
 const Dailypost = () => {
-  const formattedToday = useRecoilValue(formattedTodaySelector);
-  const [isClicked, setIsClicked] = useRecoilState(IsClickedAtom);
+  const dispatch = useDispatch();
+  const formattedToday = useSelector(state => state.formattedTodaySlice);
+
   const [inputData, setInputData] = useState({
     aditor: '',
     saftybag_1: '',
@@ -40,7 +40,9 @@ const Dailypost = () => {
   };
 
   const onClickHandler = () => {
-    postHandler(formattedToday, inputData, setIsClicked, isClicked);
+    postHandler(formattedToday, inputData).then(() => {
+      dispatch(reRandering());
+    });
   };
 
   return (

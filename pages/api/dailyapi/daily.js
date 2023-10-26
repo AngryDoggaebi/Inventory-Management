@@ -68,7 +68,7 @@ export default async function handler(req, res) {
       // 통과
       await db.collection('inventory').insertOne(req.body);
 
-      return res.redirect(302, '/');
+      return res.status(200).json('post 성공');
     } catch (err) {
       // DB 에러
       return res.status(500).json('DB 에러');

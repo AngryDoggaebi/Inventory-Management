@@ -1,19 +1,14 @@
 'use client';
 
-import {
-  SelectedDateAtom,
-  formattedTodaySelector,
-  formattedYesterdaySelector,
-} from '@/recoil/date';
-import { useRecoilState, useRecoilValue } from 'recoil';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getHandler } from '../../utill/api/get';
-import { IsClickedAtom } from '@/recoil/daily';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { FadeLoader } from 'react-spinners';
 import { deleteHandler } from '../../utill/api/delete';
+import { useDispatch, useSelector } from 'react-redux';
+import { reRandering } from '@/redux/daily';
 
 /**
  * @todo: 로딩중 화면
@@ -23,12 +18,15 @@ import { deleteHandler } from '../../utill/api/delete';
 
 const Dailydata = () => {
   const [result, setResult] = useState();
-  const selectedDate = useRecoilValue(SelectedDateAtom);
-  const [isClicked, setIsClicked] = useRecoilState(IsClickedAtom);
-  const formattedToday = useRecoilValue(formattedTodaySelector);
-  const formattedYesterday = useRecoilValue(formattedYesterdaySelector);
   const params = useParams();
   const [isLoading, setIsLoading] = useState(false);
+  const IsClickedSlice = useSelector(state => state.IsClickedSlice);
+  const dispatch = useDispatch();
+  const SelectedDateSlice = useSelector(state => state.SelectedDateSlice);
+  const formattedToday = useSelector(state => state.formattedTodaySlice);
+  const formattedYesterday = useSelector(
+    state => state.formattedYesterdaySlice,
+  );
 
   // 어제 데이터 찾아보고 post 안 했으면 자동으로 빈 데이터 전송(수정 용이, 코드의 단순화 위해)
   useEffect(() => {
@@ -50,17 +48,17 @@ const Dailydata = () => {
   useEffect(() => {
     // get 요청
     setIsLoading(true);
-    getHandler(selectedDate, formattedToday).then(response => {
+    getHandler(SelectedDateSlice, formattedToday).then(response => {
       setResult(response.data);
       setIsLoading(false);
     });
-  }, [selectedDate, isClicked]);
+  }, [SelectedDateSlice, IsClickedSlice]);
 
   // delete 요청
   const onClickHandler = async id => {
     deleteHandler(id).then(() => {
       // 리렌더링;
-      setIsClicked(isClicked + 1);
+      dispatch(reRandering());
     });
   };
 
@@ -86,7 +84,9 @@ const Dailydata = () => {
               >
                 <tbody
                   style={
-                    v.date === selectedDate ? { border: '2px solid red' } : null
+                    v.date === SelectedDateSlice
+                      ? { border: '2px solid red' }
+                      : null
                   }
                 >
                   <tr>

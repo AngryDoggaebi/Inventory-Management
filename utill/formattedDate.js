@@ -1,3 +1,7 @@
+/**
+ * @deprecated 사용 x
+ */
+
 const today = new Date();
 export const formattedToday = `${today.getFullYear()}-${
   today.getMonth() + 1

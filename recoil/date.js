@@ -2,6 +2,10 @@
 
 import { atom, selector } from 'recoil';
 
+/**
+ * @deprecated recoil 사용 x
+ */
+
 /** 선택한 날짜
  * YYYY-MM-DD
  * @type {string}

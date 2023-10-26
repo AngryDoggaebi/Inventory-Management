@@ -1,25 +1,14 @@
-import { TodayAtom } from '@/recoil/date';
+import { setToday, setYesterday } from '@/redux/date';
 import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
+import { useDispatch } from 'react-redux';
 
 const Clock = () => {
-  const [today, setToday] = useRecoilState(TodayAtom);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const id = setInterval(() => {
-      const now = new Date();
-      // 타임존 명시
-      const todayInKorea = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'Asia/Seoul',
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-      }).format(now);
-
-      setToday(new Date(todayInKorea));
+      dispatch(setToday());
+      dispatch(setYesterday());
     }, 1000);
     return () => clearInterval(id);
   }, []);
