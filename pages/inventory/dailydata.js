@@ -12,6 +12,7 @@ import { getHandler } from '../../utill/api/get';
 import { IsClickedAtom } from '@/recoil/daily';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { FadeLoader } from 'react-spinners';
 
 /**
  * @todo: 로딩중 화면
@@ -26,6 +27,7 @@ const Dailydata = () => {
   const formattedToday = useRecoilValue(formattedTodaySelector);
   const formattedYesterday = useRecoilValue(formattedYesterdaySelector);
   const params = useParams();
+  const [isLoading, setIsLoading] = useState(false);
 
   // 어제 데이터 찾아보고 post 안 했으면 자동으로 빈 데이터 전송(수정 용이, 코드의 단순화 위해)
   useEffect(() => {
@@ -46,13 +48,15 @@ const Dailydata = () => {
 
   useEffect(() => {
     // get 요청
+    setIsLoading(true);
     getHandler(selectedDate, formattedToday).then(response => {
       setResult(response.data);
+      setIsLoading(false);
     });
   }, [selectedDate, isClicked]);
 
   // delete 요청
-  const deleteHandler = async (id, e) => {
+  const deleteHandler = async id => {
     try {
       await axios
         .delete('/api/dailyapi/daily', { data: { id: id } })
@@ -67,7 +71,12 @@ const Dailydata = () => {
 
   return (
     <>
-      {result &&
+      {isLoading ? (
+        <div className="loading-icon">
+          <FadeLoader color="rgb(29, 38, 64)" />
+        </div>
+      ) : (
+        result &&
         result.map(v => {
           const date = v.date && v.date.split('-');
 
@@ -235,8 +244,8 @@ const Dailydata = () => {
                   </Link>
                   <button
                     className="edit-delete-button"
-                    onClick={e => {
-                      deleteHandler(v._id, e);
+                    onClick={() => {
+                      deleteHandler(v._id);
                     }}
                   >
                     🗑️<span>삭제</span>
@@ -251,7 +260,8 @@ const Dailydata = () => {
               )}
             </div>
           );
-        })}
+        })
+      )}
     </>
   );
 };
