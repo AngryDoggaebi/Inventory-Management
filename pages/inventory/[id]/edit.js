@@ -1,18 +1,17 @@
 import { patchHandler } from '@/utill/api/patch';
 import { postHandler } from '@/utill/api/post';
-import { IsClickedAtom } from '@/recoil/daily';
-import { formattedTodaySelector } from '@/recoil/date';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useDispatch, useSelector } from 'react-redux';
+import { reRandering } from '@/redux/daily';
 
 const Edit = ({ item }) => {
+  const dispatch = useDispatch();
   const params = useParams();
   const [originalData, setOriginalData] = useState(); // 수정 전 값
-  const formattedToday = useRecoilValue(formattedTodaySelector);
-  const [isClicked, setIsClicked] = useRecoilState(IsClickedAtom);
+  const formattedToday = useSelector(state => state.formattedTodaySlice);
   const router = useRouter();
   const [inputData, setInputData] = useState({
     aditor: '',
@@ -64,7 +63,9 @@ const Edit = ({ item }) => {
       }
       // 데이터 존재하지 않는 경우 post 요청
       else {
-        postHandler(formattedToday, inputData, setIsClicked, isClicked);
+        postHandler(formattedToday, inputData).then(() => {
+          dispatch(reRandering());
+        });
       }
     });
   };

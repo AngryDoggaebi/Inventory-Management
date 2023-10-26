@@ -1,18 +1,11 @@
 import axios from 'axios';
 
-export const postHandler = async (
-  formattedToday,
-  inputData,
-  setIsClicked,
-  isClicked,
-) => {
+export const postHandler = async (formattedToday, inputData) => {
   const data = { date: formattedToday, directInput: true, data: inputData };
   try {
-    await axios.post('/api/dailyapi/daily', data).then(() => {
-      setIsClicked(isClicked + 1);
-    });
+    return await axios.post('/api/dailyapi/daily', data);
   } catch (error) {
-    alert(error.response.data);
+    alert(error.response && error.response.data);
     throw error;
   }
 };
