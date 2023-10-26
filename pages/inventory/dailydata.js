@@ -13,6 +13,7 @@ import { IsClickedAtom } from '@/recoil/daily';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { FadeLoader } from 'react-spinners';
+import { deleteHandler } from '../../utill/api/delete';
 
 /**
  * @todo: 로딩중 화면
@@ -56,17 +57,11 @@ const Dailydata = () => {
   }, [selectedDate, isClicked]);
 
   // delete 요청
-  const deleteHandler = async id => {
-    try {
-      await axios
-        .delete('/api/dailyapi/daily', { data: { id: id } })
-        .then(() => {
-          // 리렌더링;
-          setIsClicked(isClicked + 1);
-        });
-    } catch (err) {
-      alert(err);
-    }
+  const onClickHandler = async id => {
+    deleteHandler(id).then(() => {
+      // 리렌더링;
+      setIsClicked(isClicked + 1);
+    });
   };
 
   return (
@@ -245,7 +240,7 @@ const Dailydata = () => {
                   <button
                     className="edit-delete-button"
                     onClick={() => {
-                      deleteHandler(v._id);
+                      onClickHandler(v._id);
                     }}
                   >
                     🗑️<span>삭제</span>
