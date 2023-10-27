@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { reRandering } from '@/redux/daily';
 
-const Edit = ({ item }) => {
+const Edit = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const [originalData, setOriginalData] = useState(); // 수정 전 값
@@ -28,23 +28,30 @@ const Edit = ({ item }) => {
   }); // 수정할 값
 
   useEffect(() => {
-    setOriginalData(item);
-    // 수정하지 않는 값의 경우를 대비해서 보낼 값에 미리 저장
-    setInputData({
-      ...inputData,
-      aditor: item.data.aditor,
-      saftybag_1: item.data.saftybag_1,
-      saftybag_2: item.data.saftybag_2,
-      saftybag_3: item.data.saftybag_3,
-      pen_A: item.data.pen_A,
-      pen_B: item.data.pen_B,
-      pen_C: item.data.pen_C,
-      opp_1: item.data.opp_1,
-      opp_2: item.data.opp_2,
-      opp_pattern: item.data.opp_pattern,
-      paper: item.data.paper,
-    });
-  }, [item]);
+    const dataHandler = async () => {
+      if (params) {
+        await axios.get(`/api/dailyapi/edit?id=${params.id}`).then(res => {
+          setOriginalData(res.data);
+          // 기본값 저장
+          setInputData({
+            ...inputData,
+            aditor: res.data.data.aditor,
+            saftybag_1: res.data.data.saftybag_1,
+            saftybag_2: res.data.data.saftybag_2,
+            saftybag_3: res.data.data.saftybag_3,
+            pen_A: res.data.data.pen_A,
+            pen_B: res.data.data.pen_B,
+            pen_C: res.data.data.pen_C,
+            opp_1: res.data.data.opp_1,
+            opp_2: res.data.data.opp_2,
+            opp_pattern: res.data.data.opp_pattern,
+            paper: res.data.data.paper,
+          });
+        });
+      }
+    };
+    dataHandler();
+  }, [params]);
 
   const inputHandler = e => {
     const { value, name } = e.target;

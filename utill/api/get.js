@@ -14,3 +14,11 @@ export const getHandler = async (selectedDate, formattedToday) => {
     throw error;
   }
 };
+
+export const getSpecificDateDataHandler = async (date, setItem) => {
+  await axios
+    .get(`/api/dailyapi/specificDateChecker?date=${date}`)
+    .then(data => {
+      setItem(data.data);
+    });
+};

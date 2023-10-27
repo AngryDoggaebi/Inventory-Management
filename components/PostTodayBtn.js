@@ -1,6 +1,15 @@
+import { getSpecificDateDataHandler } from '@/utill/api/get';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-export const PostTodayBtn = ({ todayItem }) => {
+export const PostTodayBtn = () => {
+  const [todayItem, setTodayItem] = useState();
+  const formattedToday = useSelector(state => state.formattedTodaySlice);
+
+  useEffect(() => {
+    getSpecificDateDataHandler(formattedToday, setTodayItem);
+  }, []);
   return (
     <div
       className="post-today-menu"
