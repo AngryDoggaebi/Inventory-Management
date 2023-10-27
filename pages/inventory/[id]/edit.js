@@ -36,16 +36,16 @@ const Edit = () => {
           setInputData({
             ...inputData,
             aditor: res.data.data.aditor,
+            saftybag_1: res.data.data.saftybag_1,
             saftybag_2: res.data.data.saftybag_2,
             saftybag_3: res.data.data.saftybag_3,
-            saftybag_4: res.data.data.saftybag_4,
-            box_cardboard: res.data.data.box_cardboard,
-            box_tag4: res.data.data.box_tag4,
-            box_m: res.data.data.box_m,
-            opp_45: res.data.data.opp_45,
-            opp_12: res.data.data.opp_12,
-            opp_kyobo: res.data.data.opp_kyobo,
-            wrappingPaper: res.data.data.wrappingPaper,
+            pen_A: res.data.data.pen_A,
+            pen_B: res.data.data.pen_B,
+            pen_C: res.data.data.pen_C,
+            opp_1: res.data.data.opp_1,
+            opp_2: res.data.data.opp_2,
+            opp_pattern: res.data.data.opp_pattern,
+            paper: res.data.data.paper,
           });
         });
       }

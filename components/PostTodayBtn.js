@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { getSpecificDateDataHandler } from '@/utill/api/get';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -8,15 +8,7 @@ export const PostTodayBtn = () => {
   const formattedToday = useSelector(state => state.formattedTodaySlice);
 
   useEffect(() => {
-    const a = async () => {
-      await axios
-        .get(`/api/dailyapi/specificDateChecker?date=${formattedToday}`)
-        .then(data => {
-          console.log(data);
-          setTodayItem(data.data);
-        });
-    };
-    a();
+    getSpecificDateDataHandler(formattedToday, setTodayItem);
   }, []);
   return (
     <div
