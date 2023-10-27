@@ -1,6 +1,23 @@
+import axios from 'axios';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-export const PostTodayBtn = ({ todayItem }) => {
+export const PostTodayBtn = () => {
+  const [todayItem, setTodayItem] = useState();
+  const formattedToday = useSelector(state => state.formattedTodaySlice);
+
+  useEffect(() => {
+    const a = async () => {
+      await axios
+        .get(`/api/dailyapi/specificDateChecker?date=${formattedToday}`)
+        .then(data => {
+          console.log(data);
+          setTodayItem(data.data);
+        });
+    };
+    a();
+  }, []);
   return (
     <div
       className="post-today-menu"
