@@ -8,7 +8,7 @@ import { ObjectId } from 'mongodb';
  * get
  * : 수정할 내용 input defaultValue 에 뿌려주기
  * : 수정 내용 입력 전 오늘자 데이터 있는지 확인 (없는 경우 post 요청 위해)
- * @returns  { date: string, data: { aditor: string, saftybag_2: string, saftybag_3: string, saftybag_4: string, box_cardboard: string, box_tag4: string, box_m: string, opp_45: string, opp_12: string, opp_kyobo: string,wrappingPaper: string, }, directInput: boolean, dataNum: string, }
+ * @returns  { date: string, data: { aditor: string, saftybag_1: string, saftybag_2: string, saftybag_3: string, pen_1: string, pen_2: string, pen_3: string, opp_1: string, opp_2: string, opp_pattern: string, paper: string, }, directInput: boolean, dataNum: string, }
  * patch
  * : 내용 수정
  * @returns
