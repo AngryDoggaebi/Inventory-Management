@@ -8,7 +8,7 @@ import { connectDB } from '@/utill/database';
  * @param { id: string } req
  *
  * post
- * @param { date: string, data: { aditor: string, saftybag_2: string, saftybag_3: string, saftybag_4: string, box_cardboard: string, box_tag4: string, box_m: string, opp_45: string, opp_12: string, opp_kyobo: string,wrappingPaper: string, }, directInput: boolean } req
+ * @param { date: string, data: { aditor: string, saftybag_1: string, saftybag_2: string, saftybag_3: string, pen_1: string, pen_2: string, pen_3: string, opp_1: string, opp_2: string, opp_pattern: string, paper: string, }, directInput: boolean } req
  *
  * get
  * @param {selectedDate: selectedDate,formattedToday: formattedToday,} req
