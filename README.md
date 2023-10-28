@@ -4,10 +4,9 @@
  <img src="https://github.com/AngryDoggaebi/Inventory-Management/assets/120698922/cf7f4e2c-aabb-421f-84fe-ec7b305afc43" width='50%' />
 <p />
 
-재고관리를 편리하게 할 수 있는 웹페이지.
-특정 부서를 대상으로 함.
+재고관리를 편리하게 할 수 있는 웹페이지. DB에 비품의 개수를 입력, 수정, 삭제, 조회 가능.
 
-개발배경: 
+개발기간: 2023-10-15 ~ 2023-10-27
 
 <br />
 
@@ -28,6 +27,11 @@ Netlify: https://lustrous-sundae-3a9d1a.netlify.app/ <br />
 ## 아키텍처
 <p align="center">
  <img src="https://github.com/AngryDoggaebi/Inventory-Management/assets/120698922/a877d76f-c703-4020-af1b-97548697b546" />
+<p />
+
+## API 명세서
+<p align="center">
+ <img src="https://github.com/AngryDoggaebi/Inventory-Management/assets/120698922/41b152ff-a7ba-47fb-9c40-5c5ecc10eb1c" />
 <p />
 
 ## 페이지
