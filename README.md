@@ -13,7 +13,6 @@
 ## 배포
 Elastic Beanstalk: http://inventory-management2.ap-northeast-2.elasticbeanstalk.com/ <br />
 Vercel: https://inventory-management-k.vercel.app/ <br />
-Netlify: https://lustrous-sundae-3a9d1a.netlify.app/ <br />
  
 <br />
 
