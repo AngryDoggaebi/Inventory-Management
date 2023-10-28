@@ -82,12 +82,43 @@ Netlify: https://lustrous-sundae-3a9d1a.netlify.app/ <br />
 
 - 그 외 기능
   - 오늘 데이터를 입력하지 않고 날짜가 넘어가는 경우 자동으로 빈 데이터 입력 (추후 수정 가능하도록)
+  - *표시된 비품의 경우 숫자 또는 충분, 부족, 없음으로 입력하면 조회시 자동 컬러링 되어 비품량 파악에 용이
 
 <br />
 
 ### 📝 입력
 
+<img src="https://github.com/AngryDoggaebi/Inventory-Management/assets/120698922/8311bcb2-4388-4105-9135-c57e324ad685" width="15%" />
+
+- 입력
+  - 오늘 비품 개수를 입력할 수 있음
+  - error
+    - 오늘 데이터가 이미 등록된 경우
+    - 빈 값이 있을 경우
+  - *표시된 비품의 경우 숫자 또는 충분, 부족, 없음으로 입력 가능, 조회시 자동 컬러링 되어 비품량 파악에 용이
+    
 <br />
 
 ### ✏️ 수정
+
+<img src="https://github.com/AngryDoggaebi/Inventory-Management/assets/120698922/eb9b3b8a-4da6-48e8-accb-cbc3936eb0d9" width="15%" />
+<img src="https://github.com/AngryDoggaebi/Inventory-Management/assets/120698922/b1f67a30-07ad-4bb8-a676-c511b197b6e0" width="20%" />
+
+- 수정
+  - 수정할 데이터가 자동으로 채워짐
+  - 조회하는 데이터와 수정할 데이터의 날짜를 둘 다 파란색으로 표시해 혼란 최소화
+  - error
+    - 빈 값이 있을 경우
+  - 오늘 데이터가 아직 없을 경우 /inventory 페이지로 이동하여 오늘 데이터를 포스팅 할 수 있는 기회 제공
+      
+
+<br />
+<br />
+<br />
+
+
+
+
+
+
 
