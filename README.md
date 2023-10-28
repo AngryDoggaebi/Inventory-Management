@@ -4,10 +4,13 @@
 재고관리를 편리하게 할 수 있는 웹페이지.
 특정 부서를 대상으로 함.
 
-배포: http://inventory-management2.ap-northeast-2.elasticbeanstalk.com/
-
 개발배경: 
 
+## 배포
+Elastic Beanstalk: http://inventory-management2.ap-northeast-2.elasticbeanstalk.com/ <br />
+Vercel: https://inventory-management-k.vercel.app/ <br />
+Netlify: https://lustrous-sundae-3a9d1a.netlify.app/ <br />
+ 
 <br />
 
 
