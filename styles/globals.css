@@ -26,7 +26,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: var(--main-blue);
   height: auto;
 }
@@ -39,6 +39,7 @@ main {
   justify-content: center;
   align-items: center;
   gap: 20px;
+  height: 100vh;
 
   & > span:nth-child(3) {
     margin-top: 20px;
