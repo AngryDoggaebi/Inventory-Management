@@ -115,9 +115,29 @@ Vercel: https://inventory-management-k.vercel.app/ <br />
   - 오늘 데이터가 아직 없을 경우 /inventory 페이지로 이동하여 오늘 데이터를 포스팅 할 수 있는 기회 제공
 <br />
 
-### 반응형
-
-<img src="https://github.com/AngryDoggaebi/Inventory-Management/assets/120698922/3d5e3a4d-2d17-4469-9d12-9fa59224eaa0" width="50%" />
+## 반응형
+<p align="center">
+ <img src="https://github.com/AngryDoggaebi/Inventory-Management/assets/120698922/3d5e3a4d-2d17-4469-9d12-9fa59224eaa0" width="50%" />
+</p>
+ 
+<table>
+  <thead>
+    <tr>
+      <th width="50%"> 
+       <img src="https://github.com/AngryDoggaebi/Inventory-Management/assets/120698922/f2798e7b-f02e-45e8-94aa-c7ce3f37d814" width='80%' />
+      </th>
+      <th width="50%">
+       <img src="https://github.com/AngryDoggaebi/Inventory-Management/assets/120698922/c4297778-fc51-4d49-8433-9e83c58f797d" width="50%" />
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1050px 이상</td>
+      <td>1050px 이하</td>
+    </tr>
+  </tbody>
+</table>
 
 - 반응형
   -화면이 좁아지면 사용의 편의를 위해 레이아웃 세로 형식으로 변경
