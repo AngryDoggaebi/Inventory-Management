@@ -31,6 +31,7 @@ const TimePickers = () => {
     >
       <DemoContainer components={['DatePicker']}>
         <DatePicker
+          className="datepicker"
           label="YYYY/MM/DD"
           format="YYYY-MM-DD"
           value={value || ''}

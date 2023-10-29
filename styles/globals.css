@@ -26,8 +26,9 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--main-blue);
+  height: auto;
 }
 
 /* home 페이지 관련 ------------------------*/
@@ -38,6 +39,7 @@ main {
   justify-content: center;
   align-items: center;
   gap: 20px;
+  height: 100vh;
 
   & > span:nth-child(3) {
     margin-top: 20px;
@@ -186,6 +188,7 @@ td {
   min-width: 800px;
   height: 600px;
   border-radius: 80px 80px 80px 0px;
+  margin: 50px 0 50px 50px;
 }
 
 .daily-menu {
@@ -204,6 +207,23 @@ td {
 /* 입력창 --------------------------------- */
 
 .post-edit-input-form {
+  display: flex;
+  flex-flow: column;
+  gap: 7px;
+}
+
+.post-title {
+  display: flex;
+  flex-flow: column;
+  gap: 7px;
+}
+
+.post-input {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+.post-input1, .post-input2 {
   display: flex;
   flex-flow: column;
   gap: 7px;
@@ -236,6 +256,7 @@ td {
   min-width: 300px;
   height: 600px;
   border-radius: 80px 80px 80px 0px;
+  margin: 50px 50px 50px 0;
 }
 
 input {
@@ -249,3 +270,79 @@ input {
   width: 482px;
 }
 
+@media (max-width: 1050px) {
+
+  main {
+    flex-flow: column;
+    gap: 10px;
+  }
+
+  .daily_data_wrapper {
+    min-width: 600px;
+    width: 600px;
+    height: 500px;
+    margin: 30px 30px 0 30px;
+  }
+
+  .daily_post_wrapper {
+    min-width: 600px;
+    height: 400px;
+    margin: 0 30px 30px 30px;
+  }
+
+  table {
+    height: 300px;
+  }
+
+  .fixturenameTable {
+    height: 300px;
+    width: 150px;
+  }
+
+  .dailydata-table {
+    width: 50px;
+  }
+
+  th,
+  td {
+    font-size: 10px;
+  }
+
+  .post-title {
+    width: 500px;
+  }
+
+  .post-input {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+  }
+  .post-input1, .post-input2 {
+    display: flex;
+    flex-flow: column;
+    gap: 8px;
+  }
+
+  .daily-menu {
+    width: 500px;
+  }
+
+  .post-today-menu {
+    font-size: 12px;
+  }
+  .moveto-inventory-post-button{
+    font-size: 12px;
+  }
+
+ .datepicker  {
+  width: 100px;
+ }
+ .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root{
+  height: 40px;
+ }
+ .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input{
+  padding: 5px 14px 5px 14px !important;
+  font-size: 14px !important;
+ }
+ 
+}

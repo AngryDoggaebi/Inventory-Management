@@ -79,108 +79,116 @@ const Edit = () => {
 
   return (
     <form className="post-edit-input-form">
-      <h2>수정하기</h2>
-      <div id="edit-date">{originalData && originalData.date}</div>
+      <div className="post-title">
+        <h2>수정하기</h2>
+        <div id="edit-date">{originalData && originalData.date}</div>
+      </div>
+      <div className="post-input">
+        <div className="post-input1">
+          <div className="input-wrapper">
+            <span className="input-name">작성자</span>
+            <input
+              placeholder="작성자"
+              name="aditor"
+              defaultValue={originalData && originalData.data.aditor}
+              onChange={e => inputHandler(e)}
+            />
+          </div>
+          <div className="input-wrapper">
+            <span className="input-name">봉투 묶음 1호</span>
+            <input
+              placeholder="봉투 묶음 1호"
+              name="saftybag_1"
+              defaultValue={originalData && originalData.data.saftybag_1}
+              onChange={e => inputHandler(e)}
+            />
+          </div>
+          <div className="input-wrapper">
+            <span className="input-name">봉투 묶음 2호</span>
+            <input
+              placeholder="봉투 묶음 2호"
+              name="saftybag_2"
+              defaultValue={originalData && originalData.data.saftybag_2}
+              onChange={e => inputHandler(e)}
+            />
+          </div>
+          <div className="input-wrapper">
+            <span className="input-name">봉투 묶음 3호</span>
+            <input
+              placeholder="봉투 묶음 3호"
+              name="saftybag_3"
+              defaultValue={originalData && originalData.data.saftybag_3}
+              onChange={e => inputHandler(e)}
+            />
+          </div>
+          <div className="input-wrapper">
+            <span className="input-name">* 볼펜 세트 A</span>
+            <input
+              placeholder="볼펜 세트 A"
+              name="pen_A"
+              defaultValue={originalData && originalData.data.pen_A}
+              onChange={e => inputHandler(e)}
+            />
+          </div>
+          <div className="input-wrapper">
+            <span className="input-name">* 볼펜 세트 B</span>
+            <input
+              placeholder="볼펜 세트 B"
+              name="pen_B"
+              defaultValue={originalData && originalData.data.pen_B}
+              onChange={e => inputHandler(e)}
+            />
+          </div>
+        </div>
+        <div className="post-input2">
+          <div className="input-wrapper">
+            <span className="input-name">* 볼펜 세트 C</span>
+            <input
+              placeholder="볼펜 세트 C"
+              name="pen_C"
+              defaultValue={originalData && originalData.data.pen_C}
+              onChange={e => inputHandler(e)}
+            />
+          </div>
+          <div className="input-wrapper">
+            <span className="input-name">테이프 1cm</span>
+            <input
+              placeholder="테이프 1cm"
+              name="opp_1"
+              defaultValue={originalData && originalData.data.opp_1}
+              onChange={e => inputHandler(e)}
+            />
+          </div>
+          <div className="input-wrapper">
+            <span className="input-name">테이프 2cm</span>
+            <input
+              placeholder="테이프 2cm"
+              name="opp_2"
+              defaultValue={originalData && originalData.data.opp_2}
+              onChange={e => inputHandler(e)}
+            />
+          </div>
+          <div className="input-wrapper">
+            <span className="input-name">무늬 테이프</span>
+            <input
+              placeholder="무늬 테이프"
+              name="opp_pattern"
+              defaultValue={originalData && originalData.data.opp_pattern}
+              onChange={e => inputHandler(e)}
+            />
+          </div>
+          <div className="input-wrapper">
+            <span className="input-name">종이</span>
+            <input
+              placeholder="종이"
+              name="paper"
+              defaultValue={originalData && originalData.data.paper}
+              onChange={e => inputHandler(e)}
+            />
+          </div>
+        </div>
+      </div>
 
-      <div className="input-wrapper">
-        <span className="input-name">작성자</span>
-        <input
-          placeholder="작성자"
-          name="aditor"
-          defaultValue={originalData && originalData.data.aditor}
-          onChange={e => inputHandler(e)}
-        />
-      </div>
-      <div className="input-wrapper">
-        <span className="input-name">봉투 묶음 1호</span>
-        <input
-          placeholder="봉투 묶음 1호"
-          name="saftybag_1"
-          defaultValue={originalData && originalData.data.saftybag_1}
-          onChange={e => inputHandler(e)}
-        />
-      </div>
-      <div className="input-wrapper">
-        <span className="input-name">봉투 묶음 2호</span>
-        <input
-          placeholder="봉투 묶음 2호"
-          name="saftybag_2"
-          defaultValue={originalData && originalData.data.saftybag_2}
-          onChange={e => inputHandler(e)}
-        />
-      </div>
-      <div className="input-wrapper">
-        <span className="input-name">봉투 묶음 3호</span>
-        <input
-          placeholder="봉투 묶음 3호"
-          name="saftybag_3"
-          defaultValue={originalData && originalData.data.saftybag_3}
-          onChange={e => inputHandler(e)}
-        />
-      </div>
-      <div className="input-wrapper">
-        <span className="input-name">* 볼펜 세트 A</span>
-        <input
-          placeholder="볼펜 세트 A"
-          name="pen_A"
-          defaultValue={originalData && originalData.data.pen_A}
-          onChange={e => inputHandler(e)}
-        />
-      </div>
-      <div className="input-wrapper">
-        <span className="input-name">* 볼펜 세트 B</span>
-        <input
-          placeholder="볼펜 세트 B"
-          name="pen_B"
-          defaultValue={originalData && originalData.data.pen_B}
-          onChange={e => inputHandler(e)}
-        />
-      </div>
-      <div className="input-wrapper">
-        <span className="input-name">* 볼펜 세트 C</span>
-        <input
-          placeholder="볼펜 세트 C"
-          name="pen_C"
-          defaultValue={originalData && originalData.data.pen_C}
-          onChange={e => inputHandler(e)}
-        />
-      </div>
-      <div className="input-wrapper">
-        <span className="input-name">테이프 1cm</span>
-        <input
-          placeholder="테이프 1cm"
-          name="opp_1"
-          defaultValue={originalData && originalData.data.opp_1}
-          onChange={e => inputHandler(e)}
-        />
-      </div>
-      <div className="input-wrapper">
-        <span className="input-name">테이프 2cm</span>
-        <input
-          placeholder="테이프 2cm"
-          name="opp_2"
-          defaultValue={originalData && originalData.data.opp_2}
-          onChange={e => inputHandler(e)}
-        />
-      </div>
-      <div className="input-wrapper">
-        <span className="input-name">무늬 테이프</span>
-        <input
-          placeholder="무늬 테이프"
-          name="opp_pattern"
-          defaultValue={originalData && originalData.data.opp_pattern}
-          onChange={e => inputHandler(e)}
-        />
-      </div>
-      <div className="input-wrapper">
-        <span className="input-name">종이</span>
-        <input
-          placeholder="종이"
-          name="paper"
-          defaultValue={originalData && originalData.data.paper}
-          onChange={e => inputHandler(e)}
-        />
-      </div>
       <button className="submit-button" type="button" onClick={onClickHandler}>
         수정하기
       </button>
