@@ -38,7 +38,7 @@ export default async function handler(req, res) {
     if (result.deletedCount === 1) {
       return res.status(200).json('삭제됨');
     } else {
-      return res.status(500).json('삭제됨');
+      return res.status(500).json('삭제안됨');
     }
   }
   // =================================================
