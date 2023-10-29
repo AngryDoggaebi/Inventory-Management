@@ -113,7 +113,14 @@ Vercel: https://inventory-management-k.vercel.app/ <br />
   - error
     - 빈 값이 있을 경우
   - 오늘 데이터가 아직 없을 경우 /inventory 페이지로 이동하여 오늘 데이터를 포스팅 할 수 있는 기회 제공
-      
+<br />
+
+### 반응형
+
+<img src="https://github.com/AngryDoggaebi/Inventory-Management/assets/120698922/3d5e3a4d-2d17-4469-9d12-9fa59224eaa0" width="50%" />
+
+- 반응형
+  -화면이 좁아지면 사용의 편의를 위해 레이아웃 세로 형식으로 변경
 
 <br />
 <br />
