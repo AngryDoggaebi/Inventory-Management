@@ -222,6 +222,7 @@ td {
   display: flex;
   flex-flow: column;
   justify-content: space-between;
+  gap: 7px;
 }
 .post-input1, .post-input2 {
   display: flex;
