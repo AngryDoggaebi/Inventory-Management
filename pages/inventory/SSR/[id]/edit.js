@@ -28,28 +28,25 @@ const Edit = ({ res }) => {
   }); // 수정할 값
 
   useEffect(() => {
-    const dataHandler = async () => {
-      if (res) {
-        setOriginalData(res.data);
-        // 기본값 저장
-        setInputData({
-          ...inputData,
-          aditor: res.data.data.aditor,
-          saftybag_1: res.data.data.saftybag_1,
-          saftybag_2: res.data.data.saftybag_2,
-          saftybag_3: res.data.data.saftybag_3,
-          pen_A: res.data.data.pen_A,
-          pen_B: res.data.data.pen_B,
-          pen_C: res.data.data.pen_C,
-          opp_1: res.data.data.opp_1,
-          opp_2: res.data.data.opp_2,
-          opp_pattern: res.data.data.opp_pattern,
-          paper: res.data.data.paper,
-        });
-      }
-    };
-    dataHandler();
-  }, [params]);
+    if (res) {
+      setOriginalData(res);
+      // 기본값 저장
+      setInputData({
+        ...inputData,
+        aditor: res.data.aditor,
+        saftybag_1: res.data.saftybag_1,
+        saftybag_2: res.data.saftybag_2,
+        saftybag_3: res.data.saftybag_3,
+        pen_A: res.data.pen_A,
+        pen_B: res.data.pen_B,
+        pen_C: res.data.pen_C,
+        opp_1: res.data.opp_1,
+        opp_2: res.data.opp_2,
+        opp_pattern: res.data.opp_pattern,
+        paper: res.data.paper,
+      });
+    }
+  }, [res]);
 
   const inputHandler = e => {
     const { value, name } = e.target;

@@ -27,7 +27,7 @@ const index = ({ res, todayItem }) => {
         </div>
       </div>
       <div className="daily_post_wrapper">
-        <Edit item={res} />
+        <Edit res={res} />
       </div>
     </main>
   );
