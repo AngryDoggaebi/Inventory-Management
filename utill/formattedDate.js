@@ -1,6 +1,4 @@
-/**
- * @deprecated 사용 x
- */
+// 사용 x
 
 const today = new Date();
 export const formattedToday = `${today.getFullYear()}-${
