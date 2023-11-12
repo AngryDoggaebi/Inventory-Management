@@ -3,9 +3,11 @@ import DailyFixtureName from '../dailyfixturename';
 import Dailydata from '../dailydata';
 import dynamic from 'next/dynamic';
 import Edit from './edit';
-import PostTodayBtn from '@/components/PostTodayBtn';
 
 const TimePickers = dynamic(() => import('../../../components/timePickers'), {
+  ssr: false,
+});
+const PostTodayBtn = dynamic(() => import('@/components/PostTodayBtn'), {
   ssr: false,
 });
 
