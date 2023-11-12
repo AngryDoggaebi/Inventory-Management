@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
-const index = () => {
+const index = ({ title }) => {
   return (
     <main>
       <div className="home">
-        <h1 className="home-title">00회사 00부서 재고관리, 인수인계 페이지</h1>
+        <h1 className="home-title">{title}</h1>
         <Link href={'/inventory'}>
           <button className="home-button">바로가기</button>
         </Link>
@@ -16,3 +16,10 @@ const index = () => {
 };
 
 export default index;
+
+export const getStaticProps = async () => {
+  const title = '00회사 00부서 재고관리, 인수인계 페이지';
+  return {
+    props: { title },
+  };
+};
