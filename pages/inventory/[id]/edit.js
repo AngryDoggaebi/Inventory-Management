@@ -1,12 +1,9 @@
-import { SelectedDateSlice } from '@/redux/date';
-import { getHandler } from '@/utill/api/get';
 import { patchHandler } from '@/utill/api/patch';
 import { postHandler } from '@/utill/api/post';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 
 const Edit = () => {
@@ -14,14 +11,6 @@ const Edit = () => {
   const [originalData, setOriginalData] = useState(); // 수정 전 값
   const formattedToday = useSelector(state => state.formattedTodaySlice);
   const router = useRouter();
-  const { refetch } = useQuery(
-    'getDailyData',
-    () => getHandler(SelectedDateSlice, formattedToday),
-    {
-      refetchOnWindowFocus: false,
-      staleTime: 1000 * 60 * 60 * 24,
-    },
-  );
   const [inputData, setInputData] = useState({
     aditor: '',
     saftybag_1: '',
@@ -44,17 +33,17 @@ const Edit = () => {
           // 기본값 저장
           setInputData({
             ...inputData,
-            aditor: res.data.data.aditor,
-            saftybag_1: res.data.data.saftybag_1,
-            saftybag_2: res.data.data.saftybag_2,
-            saftybag_3: res.data.data.saftybag_3,
-            pen_A: res.data.data.pen_A,
-            pen_B: res.data.data.pen_B,
-            pen_C: res.data.data.pen_C,
-            opp_1: res.data.data.opp_1,
-            opp_2: res.data.data.opp_2,
-            opp_pattern: res.data.data.opp_pattern,
-            paper: res.data.data.paper,
+            aditor: res.data?.data.aditor,
+            saftybag_1: res.data?.data.saftybag_1,
+            saftybag_2: res.data?.data.saftybag_2,
+            saftybag_3: res.data?.data.saftybag_3,
+            pen_A: res.data?.data.pen_A,
+            pen_B: res.data?.data.pen_B,
+            pen_C: res.data?.data.pen_C,
+            opp_1: res.data?.data.opp_1,
+            opp_2: res.data?.data.opp_2,
+            opp_pattern: res.data?.data.opp_pattern,
+            paper: res.data?.data.paper,
           });
         });
       }
@@ -80,7 +69,7 @@ const Edit = () => {
       // 데이터 존재하지 않는 경우 post 요청
       else {
         postHandler(formattedToday, inputData).then(() => {
-          refetch();
+          router.push('/inventory');
         });
       }
     });
