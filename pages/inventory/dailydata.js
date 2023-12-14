@@ -7,8 +7,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { FadeLoader } from 'react-spinners';
 import { deleteHandler } from '../../utill/api/delete';
-import { useDispatch, useSelector } from 'react-redux';
-import { reRandering } from '@/redux/daily';
+import { useSelector } from 'react-redux';
 import { useQuery } from 'react-query';
 
 /**
@@ -20,10 +19,7 @@ import { useQuery } from 'react-query';
 const Dailydata = () => {
   const [result, setResult] = useState();
   const params = useParams();
-  const [isLoading, setIsLoading] = useState(false);
-  const IsClickedSlice = useSelector(state => state.IsClickedSlice);
-  const dispatch = useDispatch();
-  const SelectedDateSlice = useSelector(state => state.SelectedDateSlice);
+  const SelectedDate = useSelector(state => state.SelectedDateSlice);
   const formattedToday = useSelector(state => state.formattedTodaySlice);
   const formattedYesterday = useSelector(
     state => state.formattedYesterdaySlice,
@@ -39,23 +35,35 @@ const Dailydata = () => {
         },
       });
     },
-    { staleTime: 1000 * 60 * 30 },
+    {
+      staleTime: 1000 * 60 * 30,
+      refetchOnWindowFocus: false,
+    },
+  );
+
+  // 화면에 보여줄 데이터
+  const { isLoading, data, refetch } = useQuery(
+    'getDailyData',
+    () => getHandler(SelectedDate, formattedToday),
+    {
+      refetchOnWindowFocus: false,
+      staleTime: 1000 * 60 * 60 * 24,
+    },
   );
 
   useEffect(() => {
-    // get 요청
-    setIsLoading(true);
-    getHandler(SelectedDateSlice, formattedToday).then(response => {
-      setResult(response.data);
-      setIsLoading(false);
-    });
-  }, [SelectedDateSlice, IsClickedSlice]);
+    if (data) setResult(data.data);
+  }, [data]);
+
+  useEffect(() => {
+    refetch();
+  }, [SelectedDate]);
 
   // delete 요청
   const onClickHandler = async id => {
     deleteHandler(id).then(() => {
       // 리렌더링;
-      dispatch(reRandering());
+      refetch();
     });
   };
 
@@ -81,9 +89,7 @@ const Dailydata = () => {
               >
                 <tbody
                   style={
-                    v.date === SelectedDateSlice
-                      ? { border: '2px solid red' }
-                      : null
+                    v.date === SelectedDate ? { border: '2px solid red' } : null
                   }
                 >
                   <tr>

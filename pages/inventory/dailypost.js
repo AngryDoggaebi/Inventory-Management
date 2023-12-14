@@ -1,11 +1,20 @@
 import { useState } from 'react';
 import { postHandler } from '../../utill/api/post';
-import { useDispatch, useSelector } from 'react-redux';
-import { reRandering } from '@/redux/daily';
+import { useSelector } from 'react-redux';
+import { useQuery } from 'react-query';
+import { getHandler } from '@/utill/api/get';
+import { SelectedDateSlice } from '@/redux/date';
 
 const Dailypost = () => {
-  const dispatch = useDispatch();
   const formattedToday = useSelector(state => state.formattedTodaySlice);
+  const { refetch } = useQuery(
+    'getDailyData',
+    () => getHandler(SelectedDateSlice, formattedToday),
+    {
+      refetchOnWindowFocus: false,
+      staleTime: 1000 * 60 * 60 * 24,
+    },
+  );
 
   const [inputData, setInputData] = useState({
     aditor: '',
@@ -41,7 +50,7 @@ const Dailypost = () => {
 
   const onClickHandler = () => {
     postHandler(formattedToday, inputData).then(() => {
-      dispatch(reRandering());
+      refetch();
     });
   };
 

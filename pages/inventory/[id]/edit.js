@@ -1,18 +1,27 @@
+import { SelectedDateSlice } from '@/redux/date';
+import { getHandler } from '@/utill/api/get';
 import { patchHandler } from '@/utill/api/patch';
 import { postHandler } from '@/utill/api/post';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { reRandering } from '@/redux/daily';
+import { useQuery } from 'react-query';
+import { useSelector } from 'react-redux';
 
 const Edit = () => {
-  const dispatch = useDispatch();
   const params = useParams();
   const [originalData, setOriginalData] = useState(); // 수정 전 값
   const formattedToday = useSelector(state => state.formattedTodaySlice);
   const router = useRouter();
+  const { refetch } = useQuery(
+    'getDailyData',
+    () => getHandler(SelectedDateSlice, formattedToday),
+    {
+      refetchOnWindowFocus: false,
+      staleTime: 1000 * 60 * 60 * 24,
+    },
+  );
   const [inputData, setInputData] = useState({
     aditor: '',
     saftybag_1: '',
@@ -71,7 +80,7 @@ const Edit = () => {
       // 데이터 존재하지 않는 경우 post 요청
       else {
         postHandler(formattedToday, inputData).then(() => {
-          dispatch(reRandering());
+          refetch();
         });
       }
     });
