@@ -9,6 +9,7 @@ import { FadeLoader } from 'react-spinners';
 import { deleteHandler } from '../../utill/api/delete';
 import { useDispatch, useSelector } from 'react-redux';
 import { reRandering } from '@/redux/daily';
+import { useQuery } from 'react-query';
 
 /**
  * @todo: 로딩중 화면
@@ -29,21 +30,17 @@ const Dailydata = () => {
   );
 
   // 어제 데이터 찾아보고 post 안 했으면 자동으로 빈 데이터 전송(수정 용이, 코드의 단순화 위해)
-  useEffect(() => {
-    const emptyDataHandler = async () => {
-      try {
-        await axios.get('/api/dailyapi/yesterdayDataChecker', {
-          params: {
-            yesterday: formattedYesterday,
-          },
-        });
-      } catch (error) {
-        console.log(error);
-        throw error;
-      }
-    };
-    emptyDataHandler();
-  }, []);
+  useQuery(
+    'yesterdayDataChecker',
+    () => {
+      axios.get('/api/dailyapi/yesterdayDataChecker', {
+        params: {
+          yesterday: formattedYesterday,
+        },
+      });
+    },
+    { staleTime: 1000 * 60 * 30 },
+  );
 
   useEffect(() => {
     // get 요청
