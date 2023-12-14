@@ -19,8 +19,9 @@ Vercel: https://inventory-management-k.vercel.app/ <br />
 
 ## 아키텍처
 <p align="center">
- <img src="https://github.com/AngryDoggaebi/Inventory-Management/assets/120698922/07397402-56c8-4279-8f7b-16970d32f937" />
+ <img src="https://github.com/AngryDoggaebi/Inventory-Management/assets/120698922/e5cc92f4-7244-4ebc-8f32-fbbcc9d3c73f" />
 <p />
+
 
 ## API 명세서
 <p align="center">
